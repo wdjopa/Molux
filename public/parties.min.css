@@ -1,0 +1,1670 @@
+/*MATERIALIZE*/
+h2 {
+	font-size: inherit;
+	line-height: 0;
+	margin: 0;	
+}
+a{
+	color: rgb(151, 213, 240);
+	/* text-shadow: 1px 1px 1px #000 */
+}
+.carousel.carousel-slider .carousel-item{
+	min-height: 75vh;
+}
+.chargement-accueil{
+	background: rgba(10,10,10,0.74);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	font-size: 2em;
+	color: white;
+	justify-content: center;
+	align-items: center;
+	z-index: 10000000000;
+}
+.chargement-accueil img{
+	width: 10em;
+	margin: 5vh 0;
+}
+
+.circle2{
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: orange;
+	width: 10vw;
+	font-size: 2.5em;
+	line-height: 2em;
+}
+.sidenav .name{
+	text-transform: capitalize;
+}
+.line{
+	display: block;
+	margin-bottom: 1vh;
+	margin-top: 1vh;
+	margin-left: 3vw; 
+}/*
+.sidenav li{
+	line-height: inherit;
+}*/
+.marron{
+	background: #CF8442;
+}
+
+body{
+	background: url("Images/background.png");
+}
+
+.cover{
+	background: rgba(100,100,100,0.4);
+}
+
+
+.bug-btn{
+	position: fixed;
+	padding: 1em;
+	margin: 1em auto;
+	left: 10rem;
+	border-radius: 3em;
+	z-index: 100000000000;
+}
+
+
+.card-partie{
+	box-shadow: 0px 1px 1px #000;
+	background: rgba(255,239,224,0.89);
+	width: 100%;
+	min-height: 23vh;
+	margin: 2vh auto;
+	border-radius: 1vw;
+	padding: 2vh;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	font-family: "open sans";
+}
+.card-partie .ligne-1{
+	font-size: 3vh;
+	color: #222;
+	font-family: "capriola";
+}
+.card-partie .ligne-2{
+	font-size: 2vh;
+	color: #444;
+	font-weight: 100;
+	margin: 1vh 0;
+	margin-bottom: 1vh;
+}
+.card-partie .ligne-3{
+	font-size: 2.5vh;
+	color: #444;
+	font-weight: 100;
+	margin: 2vh 0;
+	margin-top: 1vh;
+}
+b{
+	font-style: bolder;
+}
+
+
+/*SECOND SCREEN*/
+.second-screen{
+	position: absolute;
+	top: 0;	
+	left: 0;	
+	width: 100vw;	
+	height: 100vh;	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	z-index: 100000;
+	transition: all 0.1s ease;
+	transform: scale(0);
+	overflow: hidden;
+}
+.second-screen .cover{
+	background: rgba(25,25,25,0.6);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.second-screen .cadre{
+	background: whitesmoke;
+	width: 95vw;
+	height: 95vh;
+	position: relative;
+	background: rgba(255,239,224,1);
+	border-radius: 2px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 1vw;
+	box-sizing: border-box;
+	padding-bottom: 0;
+}
+.second-screen .cadre.password{
+	display: none;
+}
+.second-screen .cadre .header{
+	height: 10%;
+	width: 100%;
+	display: flex;
+	color: #222;
+	font-family: "capriola";
+	font-size: 1.5em;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	border-bottom: 1px solid #555;
+}
+.second-screen .cadre .body{
+	font-family: "capriola";
+	height: 90%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	position: relative;
+}
+.second-screen .cadre .body .row{
+	width: 100%;
+	height: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	position: relative;
+}
+.second-screen .cadre .body .row .col{
+	height: 90%;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-end;
+	padding: 1vw;
+	box-sizing: border-box;
+}
+.second-screen .cadre .body .row .col.text{
+	width: 100%;
+	align-items: center;
+	font-size: 1em;
+}
+.second-screen .cadre .body .row .col.text .aide{
+	background: #777;
+	color: white;
+	position: relative;
+	width: 1em;
+	height: 1em;
+	border-radius: 3em;
+	padding: 0.8em;
+	font-size: 1em;
+	margin-right: 1em;
+	cursor: pointer;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.second-screen .cadre .body .row .col.text .aide .help-container{
+	transform: scale(0);
+	overflow: hidden;
+	transition: all 0s ease;
+}
+.second-screen .cadre .body .row .col.text .aide:active .help-container{
+	transform: scale(1);
+	transition: all 0.1s ease;
+	position: absolute;
+	left: 0;
+	top: 0;
+	font-size: 1em;
+	background: rgb(231, 124, 24);
+	color: #fff;
+	width: 90vw;
+	text-align: left;
+	padding: 1vw;
+	z-index: 100;
+	box-shadow: 2px 1px 3px #555;
+	border-radius: 5px;
+	
+}
+.second-screen .cadre .body .row .col.vals{
+	width: 80%;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 1vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-start;
+}
+.second-screen .cadre .body .row .col.vals .arrow{
+	width: 10%;
+	height: 100%;
+	cursor: pointer;
+	background: #CF8442;
+	color: white;
+	border-radius: 5px;
+	box-shadow: 2px 1px 3px #555;
+	margin: 0 1vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-shadow: 0px -1px 1px #fff;
+}
+.second-screen .cadre .body .row .col.vals .arrow:active{
+	box-shadow: none;
+}
+.second-screen .cadre .body .row .col.vals .val{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	text-shadow: 0px 1px 1px #555;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+.second-screen .cadre .body .row .col.vals .val input{
+	border: none;
+	background: rgba(207, 232, 166,.1);
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	padding: 0.8em;
+	margin: 0;
+	box-sizing: border-box;
+	box-shadow: 0px 0px 3px #555;
+	font-family: 'capriola';
+	border-radius: 1px;
+}
+.second-screen .cadre .body .row.securite  .col.vals .right{
+	margin-left: 1em; 
+	height: 100%;
+	width: 25%;
+	box-sizing: border-box;
+}
+.second-screen .cadre .body .row .col.vals .right button{
+	background: #CF8442;
+	padding: 1vw;
+	box-sizing: border-box;
+	color: white;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 2px 1px 3px #555;
+	border-radius: 1px;
+	border: none;
+	height: 100%;
+	width: 100%;
+}
+.second-screen .cadre .body .row.btns{
+	flex-direction: row;
+	align-items: space-around;
+	justify-content: space-around;
+	padding: 0;
+	width: 100%;
+}
+.second-screen .cadre .body .row.btns:after{
+	display: none;
+}
+.second-screen .cadre .body .row.btns .btn.valid{
+	background: #2D9CDB;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 70%;
+	border-radius: 0.5vw;
+	padding: 0 1vw;
+	width: 30%;
+	color: white;
+	font-family: "capriola";
+	position: relative;
+	box-shadow: 2px 1px 3px #555;
+	box-sizing: border-box;
+	border: none;
+	cursor: pointer; 
+}
+
+.second-screen .cadre .body .row.btns .btn.cancel{
+	background: coral;
+	cursor: pointer; 
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 70%;
+	border-radius: 0.5vw;
+	padding: 0 1vw;
+	width: 30%;
+	color: white;
+	font-family: "capriola";
+	position: relative;
+	box-shadow: 2px 1px 3px #555;
+	box-sizing: border-box;
+	border: none;
+}
+
+.second-screen .cadre.password .body .row.vertical{
+	flex-direction: column;
+	width: 100%;
+}
+.second-screen .cadre.password .body .row.vertical .text{
+	width: 100%;
+}
+.second-screen .cadre.password .body .row.vertical .champ{
+	padding: 1vh 1vw;
+}
+.second-screen .cadre.password .body .row.btns{
+	height: 20%;
+}
+.second-screen .erreur{
+	color: rgb(219, 45, 45);
+}
+
+
+
+
+.page-partie{
+	display: none;
+}
+section{
+	background: rgba(114,72,34,0.45);
+	padding: 2vw;
+	height: 75vh;
+	overflow: auto;
+	overflow-x: hidden;
+	box-sizing: border-box;
+}
+section .navbar-search{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	height: 10vh;
+	margin-bottom: 3vh;
+}
+section .navbar-search .formulaire{
+	width: 80%;
+	height: 90%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+}
+section .navbar-search .formulaire .champs{
+	background: rgba(255,239,224,0.7);
+	border-radius: 0.5vw;
+	width: 75%;
+	height: 100%;
+	padding: 0 2vw;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	font-family: "capriola";
+	box-shadow: 2px 1px 3px #555;
+}
+section .navbar-search .formulaire .champs .filter{
+	width: 40%;
+	background: transparent;
+	border: none;
+	border-bottom: 2px solid #333;
+	font-size: 2vh;
+	font-family: "capriola";
+	padding: 0.5vw;
+}
+section .navbar-search .formulaire .champs input{
+	width: 55%;
+	background: transparent;
+	border: none;
+	border-bottom: 2px solid #888;
+	padding: 0.5vw 1vw;
+	font-family: "capriola";
+	font-size: 2vh;
+}
+section .default-btn{
+	cursor:  pointer;
+	background: #CF8442;
+
+	margin: 0 1vw;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	height: 100%;
+	border-radius: 0.5vw;
+	padding: 0 1vw;
+	width: 16%;
+	box-shadow: 2px 1px 3px #555;
+	color: white;
+}
+section .navbar-search .valid-btn{
+	background: #2D9CDB;
+
+	margin: 0 1vw;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 90%;
+	border-radius: 0.5vw;
+	padding: 0 1vw;
+	width: 20%;
+	color: white;
+	font-family: "capriola";
+	position: relative;
+	box-shadow: 2px 1px 3px #555;
+	box-sizing: border-box;
+}
+section .navbar-search .valid-btn .loader{
+	width: 20%;
+}
+section .navbar-search .logo{
+	width: 12.0%;
+}
+
+
+/* section .parties{
+
+} */
+
+.live-chat-btn{
+	cursor: pointer;
+	position: fixed;
+	bottom: 1em;
+	right: 1em;
+	width: 4em;
+	height: 4em;
+	background: teal;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items:center;
+	box-shadow: 0px 0px 10px 1px rgb(114, 71, 32);
+	border-radius: 100vw;
+	z-index: 10000;
+}
+.live-chat-btn .notif{
+	display: none;
+    flex-direction: column;
+    background: rgb(206, 44, 44);
+    justify-content: center;
+    align-items: center;
+    font-family: "prompt";
+    font-size: 1em;
+    box-sizing: border-box;
+    position: absolute;
+    color: white;
+    top: -1.5vh;
+    right: -0.2em;
+    min-width: 1.5em;
+    padding: 0 0.51vw;
+    height: 1.5em;
+    border-radius: 100vw;
+}
+.live-chat-btn .logo {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items:center;
+
+}
+.live-chat-btn .logo img{
+	width: 50%;
+}
+
+
+.live-chat{
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	z-index: 10000;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.live-chat .cover{
+	background: rgba(25,25,25,0.6);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 0;
+}
+.live-chat .box-messages{
+	position: relative;
+	background: wheat;
+	width: 90%;
+	height: 95%;
+	z-index: 10;
+	border-radius: 5px;
+	overflow: hidden;
+}
+.live-chat .box-messages .entete{
+	box-shadow: 0px 0px 10px #555;
+	z-index: 100;
+	height: 10%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.2em 1em;
+	box-sizing: border-box;
+	font-family: "macondo";
+	color: white;
+	background: #CF8442;
+	position: relative;
+}
+.box-messages .entete .titre i{
+	position: absolute;
+	bottom: -1em;
+	color: forestgreen;
+	font-weight: 700;
+}
+.live-chat .box-messages .entete h2{
+	font-size: 1.82em;
+}
+.live-chat .box-messages .entete i{
+	display: inline-block;
+	margin-left: 2vw;
+	text-overflow: ellipsis; 
+	font-size: 0.5em;
+	font-family: "open sans", "prompt", calibri;
+	font-style: normal;
+	color: #fff;
+}
+.live-chat .box-messages .entete .close{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	font-size: 2em;
+	height: 100%;
+	width: 20%;
+	border-radius: 1px;
+}
+.live-chat .box-messages .entete .close:active{
+	box-shadow: 2px 1px 3px #555;
+	cursor: pointer;
+	background: #F23F3F;
+}
+.answer-box{
+	height: 10%;
+	background: #A3662F;
+	width: 100%;
+	position: relative;
+}
+.answer-box .level-2{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	padding: 1vh 2vw;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+.answer-box .level-2 .emoji{
+	height: 100%;
+	width: 4.5%;
+	background: rgba(18, 19, 18, 0.27);
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	border-radius: 5px;
+}
+.answer-box .level-2 .emoji img{
+	width: 65%;
+	height: 65%;
+}
+.answer-box .level-2 .parent-response{
+	width: 85%;
+	background: white;
+	height: 100%;
+	overflow: auto;
+	border-radius: 100vh;
+	
+}
+.answer-box .level-2 .response-input{
+	background: transparent;
+	width: 95%;
+	height: 100%;
+	font-family: "capriola";
+	font-size: 1em;
+	padding: 0.7em;
+	overflow: auto;
+	box-sizing: border-box; 
+	color: #555;
+}
+.answer-box .level-2 .response-input[data-placeholder]:empty:not([data-div-placeholder-content]):before {
+    content: attr(data-placeholder);
+    margin-left: 2px;
+    color: #444;
+}
+
+.answer-box .level-2 .send-btn{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	cursor:  pointer;
+	background: #2D9CDB;
+	width: 7vh;
+	height: 7vh;
+	box-shadow: 2px 1px 3px #555;
+	border-radius: 100vh;
+	color: white;
+	font-family: "capriola";
+}
+.answer-box .level-2 .send-btn i{
+	font-size: 1.3em;
+	transform: rotate(-35deg);
+	padding-left: 0.2em;
+	transition: all 0.13s ease;
+}
+.answer-box .level-2 .send-btn:active i{
+	padding-left: 1.5em;
+}
+
+.chat{
+	box-sizing: border-box;
+	overflow: auto;
+	overflow-x: hidden;
+	width: 100%;
+	height: 80%;
+}
+.chat .bloc{
+	width: 100%;
+	padding: 1vh 1vw;
+	margin: 3vw 0;
+	box-sizing: border-box;
+}
+.chat .bloc .line-1{
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+}
+.chat .bloc.you .line-1{
+	flex-direction: row-reverse;
+}
+.chat .bloc .line-1 a.user{
+    margin: -1.2vw 1vw 0 1vw;
+    display: block;
+    color: white;
+    background: #A3662F;
+    width: 10vw;
+    height: 10vw;
+    font-family: "macondo";
+    font-size: 1.3em;
+    text-decoration: none;
+    border-radius: 100vw;
+    padding-top: 0.5vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.chat .bloc .line-1 .date {
+	font-family: "prompt";
+	font-size: 1em;
+	color: #555;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start	;
+	justify-content: flex-start;
+}
+.chat .bloc .line-1 .date .nom{
+	color: chocolate;
+	text-transform: capitalize;
+}
+.chat .bloc .line-1 .date .heure{
+	font-size: 0.7em;
+}
+.chat .bloc .message{
+	display: flex;
+	flex-direction: row;
+	margin: 0 2vw;
+	overflow-wrap: break-word;
+	box-sizing: border-box;
+	position: relative;
+	color: #fff;
+	font-family: "capriola";
+	width: 100%;
+}
+.chat .bloc .message p{
+	position: relative;
+	padding: 1vh 1em;
+	font-size: 0.9em;
+	border-radius: 3px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+	max-width: 90%;
+	display: block;
+	background-color: #CF8442;
+}
+.chat .bloc.you .message{
+	margin: 0 -1vw;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+.chat .bloc.you .message p{
+	background-color: whitesmoke;
+	color: #222;
+}
+ .chat .bloc.other .message p:after {
+	content: '';
+	position: absolute;
+	top: -2vh;
+	top: -1.7vh;
+	left: 1vw;
+	border-bottom: 1em solid #CF8442;
+	border-left: 1em solid transparent;
+	border-right: 1em solid transparent;
+	border-radius: 2vw;
+}
+.chat .bloc.you .message p:after {
+	content: '';
+	position: absolute;
+	top: -1.7vh;
+	right: 1vw;
+	border-radius: 2vw;
+	border-bottom: 1em solid rgba(245, 245, 245, 0.966);
+	border-left: 1em solid transparent;
+	border-right: 1em solid transparent;
+ }
+section .parties .titre{
+	color: #eee;
+	font-family: "prompt";
+	font-weight: 200;
+	margin-bottom: 2vh;
+}
+section .parties .les-parties{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: flex-start;
+	min-height: 45vh;
+	overflow: auto;
+	overflow-x: hidden;
+}
+section .parties .les-parties .card-partie{
+	box-shadow: 0px 1px 1px #000;
+	background: rgba(255,239,224,0.89);
+	width: 100%;
+	min-height: 25vh;
+	margin: 1vw;
+	border-radius: 1vw;
+	padding: 1em;
+	overflow: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	font-family: "open sans";
+}
+section .parties .les-parties .card-partie .ligne-2{
+	font-size: 1em;
+	color: #444;
+	font-weight: 100;
+}
+section .parties .les-parties .card-partie hr{
+	border: none;
+	width: 100%;
+	height: 0.1em;
+	background: #333;
+}
+section .parties .les-parties .card-partie .ligne-4{
+	text-align: right;
+}
+section .parties .les-parties .card-partie button{
+	border: none;
+	padding: 1.2vh 2.5vw;
+	border-radius: 3px;
+	box-shadow: none;
+	background: #2D9CCB;
+	color: white;
+	width: 50%;
+	margin-bottom: 0;
+}
+
+/*PAGE PARTIES*/
+.page-partie{
+	background: #CF8442;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 100000;
+	padding: 3vh 4vh;
+
+
+	padding: 0; 
+	margin: 0; 
+	display: none;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	box-sizing: border-box;
+	overflow: auto;
+
+}
+.page-partie .header-container{
+	height: 15vh;
+	width: 100%;
+}
+
+.page-partie .header{
+	height: 100%;
+	width: 100%;
+	box-sizing: border-box;
+	overflow: hidden;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+.page-partie .header .level-1{
+	height: 10vh;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2vh 3vw;
+	
+}
+.page-partie .header .level-2{
+	height: 5vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+}
+.page-partie .header .titre{
+	padding: 2vh 3vw;
+	color: white;
+	font-size: 2em;
+}
+.page-partie .header .texte{
+	color: white;
+	font-size: 1em;
+	font-weight: 100;
+}
+.page-partie .header .close{
+	color: white;
+	cursor: pointer;
+	width: 10vh;
+	height: 10vh;
+	font-size: 5vh;
+	font-weight: 700;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4px;
+	transition: all 0.4s ease;
+}
+.page-partie .header .close:hover{
+	box-shadow: 2px 1px 3px #555;
+	background: #F23F3F;
+	color: white;
+}
+.page-partie .header::after{
+	content: "";
+
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 1px;
+	transition: all 0.3s ease;
+	background: linear-gradient(90deg,transparent, #eee,transparent );
+}
+.page-partie .niveau-1{
+	width: 100%;
+	height: 15vh;
+	box-sizing: border-box;
+	padding: 1em ;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+.page-partie .niveau-1 .btn{
+	font-family: "capriola";
+	background: transparent;
+	border: none;
+	color: white;
+	padding: 0;
+	font-size: 1em;
+	border-radius: 4px;
+	opacity: 0.8;
+}
+.page-partie .niveau-1 .btn:hover{
+	opacity: 1;
+}
+.page-partie .niveau-1 .btn.play{
+	box-shadow: 2px 1px 3px #555;
+	background: #2D9CCB;
+	width: 60%;
+	color: #fff;
+}
+.page-partie .niveau-1 .btn.join{
+	box-shadow: 2px 1px 3px #555;
+	background: rgba(210,210,210,0.27);
+	width: 35%;
+	color: #fff;
+}
+.page-partie .niveau-1 .btn.messages{
+	box-shadow: 2px 1px 3px #555;
+	background: rgba(150,150,150,0.27);
+	background: #00c853 ;
+	width: 35%;
+	color: #fff;
+}
+.page-partie .niveau-2{
+	padding: 1vh 4vh;
+	height: 60vh;
+	font-family: "capriola";
+}
+
+.page-partie .niveau-2 .img-loader{
+	display: flex;
+	flex-direction: column-reverse;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-size: 0.8em;
+	font-family: "open sans", "capriola";
+
+}
+.page-partie .niveau-2 .img-loader img{
+	width: 20%;
+}
+.page-partie .niveau-2 .titre{
+	line-height: 0;
+	margin: 0;
+	font-size: 3vh;
+	padding: 1em 0;
+	font-weight: 100;
+	color: #eee;
+}
+.page-partie .niveau-2 .container-niveau-2{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: space-between;
+}
+.page-partie .niveau-2 .container-niveau-2 .personnal-card{	
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: space-between;
+	background: rgba(255,239,224,0.89);
+	padding: 2vh 4vw;
+	margin: 1vh 0;
+	box-shadow: 2px 1px 3px #555;
+	border-radius: 2px;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
+.page-partie .niveau-2 .container-niveau-2 .personnal-card .retirer{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 0;
+	overflow: hidden;
+	background: rgba(255,63,63,0.9);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	color: white;
+	align-items: center;
+	transition: all 0.1s ease;
+}
+.page-partie .niveau-2 .container-niveau-2 .personnal-card:hover .retirer{
+	height: 100%;
+	cursor: pointer;
+}	
+.page-partie .niveau-2 .container-niveau-2 .personnal-card .nom{
+	font-size: 3vh;
+	color: #333;
+}
+.page-partie .niveau-2 .container-niveau-2 .personnal-card .niveau{
+	text-align: right;
+	color: #555;
+	font-size: 2vh;
+}	
+
+
+/*PAGE JEU*/
+section{
+	display: none;
+}
+section.page-creation{
+	display: block;
+}
+section.page-partie{
+	display: none;
+}
+section.page-jeu{
+	background: url("Images/background.png");
+	/*background: #CF8442;*/
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	overflow: auto;
+	overflow-x: hidden;
+	height: 100vh;
+	padding: 0;
+	z-index: 10000;
+}
+section.page-jeu h4{
+	color: whitesmoke;
+	font-weight: 100;
+	font-size: 1em;
+}
+
+section.page-jeu img{
+	width: 20%;
+}
+section.page-jeu .regles{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	font-family: "capriola";
+	position: absolute;
+	background: #CF8442;
+	overflow: hidden;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 1000;
+}
+section.page-jeu .regles .regle{
+	width: 95%;
+	box-sizing: border-box;
+	padding: 2vh 5vw;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+section.page-jeu .regles .regle .bloc{
+	background: rgba(250,210,175,0.74);
+	border-radius: 2px;
+	width: 100%;
+	box-shadow: 1px 1px 1px #555;
+	height: 100%;
+	overflow: auto;
+	box-sizing: border-box;
+	padding: 1.5em 1em;
+	color: #222;
+	font-weight: 100;
+}
+section.page-jeu .regles .regle .bloc .par{
+	margin-top: 5vh; 
+	font-size: 0.95em;
+}
+section.page-jeu .regles .regle .bloc .par .lettres-proposes{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	width: 100%;
+	padding: 1vw 0;
+}
+section.page-jeu .regles .regle .bloc .par .lettres-proposes .lettre{
+	display: inline-block;
+	background: #CF8442;
+	padding: 1em;
+	height: 2em;
+	min-width: 2em;
+	color: white;
+	margin-right: 2vh;
+	text-transform: capitalize;
+	display: flex;
+	flex-direction: row;
+	box-shadow: 0px 0px 5px #333;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+}
+section.page-jeu .regles .loading{
+	width: 90%;
+	height: 15%;
+	padding-bottom: 2vh;
+	padding-top: 0;
+	box-sizing: border-box;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+section.page-jeu .regles .loading button{
+	background: #2D9CDB; 
+	cursor: pointer;
+	margin: 0 1vw;
+	height: 100%;
+	border-radius: 0.5vw;
+	padding: 0 3vw;
+	width: 95%;
+	border: none;
+	font-size: 1.2em;
+	color: white;
+	font-family: "capriola";
+	box-shadow: 2px 1px 3px #555;
+}
+section.page-jeu .regles .loading button.inactive{
+	cursor: default;
+	background:#aaa;
+	box-shadow: 0px 0px 0px #555 inset;
+	color: #777;
+}
+
+section.page-jeu .header-container{
+	background: #CF8442;
+	height: 15vh;
+	padding: 0 2vw;
+	width: 100vw;
+	box-sizing: border-box;
+	box-shadow: 2px 1px 3px #555;
+}
+section.page-jeu .header-container .header{
+	height: 100%;
+	width: 100%;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	color: white;
+}
+section.page-jeu .header-container .titre{
+	font-size: 6vh;
+}
+
+section.page-jeu .header-container .temps{
+	font-size: 1em;
+}
+section.page-jeu .corps{
+	height: 80vh;
+	width: 100vw;
+}
+section.page-jeu .corps .entete{
+	height: 10%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	color: white;
+	padding: 2vh 3vw;
+	font-family: "capriola";
+	font-size: 1.5vw;
+}
+section.page-jeu .corps .entete .points{
+	font-size: 4vh;
+    text-shadow: 1px 1px 2px black;
+}
+section.page-jeu .corps .niveau-1{
+	height: 55%;
+	width: 95%;
+	border-radius: 5px;
+	box-shadow: 2px 1px 3px #555;
+	font-family: "capriola";
+	padding: 2vh 1.4vw;
+	overflow: hidden;
+	color: #555;
+	font-weight: 100;
+	box-sizing: border-box;
+	background: rgba(250,210,175,0.74);
+	margin: auto;
+	position: relative;
+}	
+section.page-jeu .corps .niveau-1 h2{
+	font-size: 1em;
+}
+section.page-jeu .corps .niveau-1 .proposition{
+	overflow: hidden;
+	transition: all 0.4s ease;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 0%;
+	display: flex;
+	flex-direction: column;
+	background: rgba(18,15,13,0.77);
+	z-index: 100;
+}
+section.page-jeu .corps .niveau-1 .proposition .instruction{
+	background: rgba(255,229,207,0.81);
+	padding: 3vh 1vw;
+	text-align: center;
+	color: #333;
+	font-size: 3vh;
+}
+section.page-jeu .corps .niveau-1 .proposition .erreur{
+	margin: 1vh auto;
+    width: 90%;
+    text-align: center;
+    padding: 1vh;
+    font-size: 2.43vh;
+    background: #F23F3F;
+    border-radius: 7px;
+    color: white;
+}
+section.page-jeu .corps .niveau-1 .proposition .mot{
+	text-align: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+section.page-jeu .corps .niveau-1 .proposition .mot .lettre{
+	cursor: pointer;
+	background: #502312;
+	height: 6vh;
+	width: 10vw;
+	margin-right: 1vw;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+	overflow: hidden;
+
+}
+section.page-jeu .corps .niveau-1 .proposition .mot .lettre .valeur{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	background: chocolate;
+	color: white;
+	width: 100%;
+	height: 100%;
+	font-size: 3vh;
+	text-transform: capitalize;
+	cursor: default;
+}
+section.page-jeu .corps .niveau-1 .mots{	
+	margin: 4vh 0;
+    padding: 5vh 0;
+    padding-top: 2vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-x: none;
+    overflow-y: auto;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+section.page-jeu .corps .niveau-1 .mots .mot{
+	background: chocolate;
+	color: whitesmoke;
+	font-size: 3vh;
+	letter-spacing: 0.41vh;
+	margin-right: 1vw;
+	margin-bottom: 2vh;
+	padding: 1vh 1em;
+	border-radius: 5px;	
+	box-shadow: 2px 1px 3px #555;
+}
+
+section.page-jeu .corps .niveau-2{
+	height: 30%;
+	width: 95%;
+	font-family: "capriola";
+	font-size: 1vw;
+	overflow: auto;
+	color: #555;
+	font-weight: 100;
+	box-sizing: border-box;
+	margin: auto;
+	margin-top: 5vh;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+section.page-jeu .corps .niveau-2 .lettres{
+	box-sizing: border-box;
+	width: 100%;
+	border-radius: 4px;
+	padding: 2vh 1.4vw;
+	display: block;
+	border-radius: 5px;
+	box-shadow: 2px 1px 3px #555;
+	background: rgba(250,210,175,0.74);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+section.page-jeu .corps .niveau-2 .lettres .lettre{
+	background: #502312;
+	height: 6vh;
+	width: 100%;
+	margin: 0 1vw;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+	overflow: hidden;
+	box-shadow: 0px 0px 7px #000;
+}
+section.page-jeu .corps .niveau-2 .lettres .lettre .valeur{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	background: chocolate;
+	color: white;
+	width: 100%;
+	height: 100%;
+	font-size: 3vh;
+	text-transform: capitalize;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+section.page-jeu .corps .niveau-2 .lettres .lettre:hover{
+	box-shadow: 0px 0px 0px #000;
+
+}
+section.page-jeu .corps .niveau-2 .bouton{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: 3vh 0vw;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+section.page-jeu .corps .niveau-2 .bouton button{
+
+	background: #2D9CDB;
+	border: none;
+	font-size: 3vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 9vh;
+	border-radius: 0.5vw;
+	width: 15%;
+	color: white;
+	font-family: "capriola";
+	position: relative;
+	box-shadow: 2px 1px 3px #555;
+	box-sizing: border-box;
+	cursor: pointer;
+	opacity: 0.7;
+	transition: all 0.3s ease;
+}
+section.page-jeu .corps .niveau-2 .bouton button:hover{
+	opacity: 1;
+}
+section.page-jeu .corps .niveau-2 .bouton button.valid{
+	width: 60%;
+}
+section.page-jeu .corps .niveau-2 .bouton button.reset{
+	background: #CF8442;
+	background: #F23F3F;
+	font-size: 2.5vh;
+}
+section.page-jeu .corps .niveau-2 .bouton button.leave{
+	background: purple;
+	background: #CF8442;
+	font-size: 2.5vh;
+}
+
+
+/*page fin-jeu*/
+section.page-fin-jeu{
+	background: #CF8442;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 100000;
+	padding: 3vh 4vh;
+
+
+	padding: 0; 
+	margin: 0; 
+	display: none;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	box-sizing: border-box;
+	overflow: auto;
+	overflow-x: hidden;
+}
+section.page-fin-jeu .header{
+	height: 15vh;
+	color: white;
+	font-size: 7vh;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;	
+}
+section.page-fin-jeu .header .texte{
+	font-family: "macondo";
+}
+section.page-fin-jeu .corps{
+	width: 100%;
+	height: 90vh;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+section.page-fin-jeu .corps .titre{
+	color: #555;
+	font-size: 2vh;
+	height: 10%;
+	padding-bottom: 2vh;
+}
+section.page-fin-jeu .corps .container{
+	/*background: rgba(120,50,0,0.051);*/
+	border-radius: 0 0 5px 5px;
+	width: 100%;
+	height: 90%;
+	overflow: auto;
+	overflow-x:none;
+	overflow-y: auto; 
+	padding: 1vh 0;
+}
+section.page-fin-jeu .corps .container.mots{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-wrap: wrap;
+
+	/* display: inline-block; */
+	overflow-x:none;
+	overflow-y: auto; 
+}
+section.page-fin-jeu .corps .container.mots .mot{
+	display: inline-block;
+	background: chocolate;
+	color: whitesmoke;
+	font-size: 2vh;
+	margin-right: 1vh;
+	margin-bottom: 1vh;
+	padding: 1vw 1em;
+	border-radius: 5px;	
+	box-shadow: 1px 1px 1px #555;
+}
+section.page-fin-jeu .corps .container.c-classement{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	flex-wrap: wrap;
+	overflow: auto;
+}
+section.page-fin-jeu .corps .container.c-classement .user{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: 100%;
+	margin-bottom: 1vw;
+	padding: 0.3vw;
+	padding-left: 1vw;
+	border-radius: 5px;
+
+}
+section.page-fin-jeu .corps .container.c-classement .user .num{
+	width: 5%;
+}
+section.page-fin-jeu .corps .container.c-classement .user .nom{
+	width: 65%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+}
+section.page-fin-jeu .corps .container.c-classement .user .points{
+	min-width: 15%;
+}
+
+section.page-fin-jeu .corps .left{
+	width: 95%;
+	height: 100%;
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: space-around;
+	align-items: center;
+	font-family: "capriola";
+}
+section.page-fin-jeu .corps .left .mes-mots{
+	background: rgba(250,210,175,0.74);
+	width: 95%;
+	height:47%;
+	box-sizing: border-box;
+	border-radius: 5px;
+	box-shadow: 1px 1px 1px #555;
+	padding: 1vw;
+}
+section.page-fin-jeu .corps .left .classement{
+	background: rgba(250,210,175,0.74);
+	width: 95%;
+	height:47%;
+	box-sizing: border-box;
+	border-radius: 5px;
+	box-shadow: 1px 1px 1px #555;
+	padding: 1vh;
+	overflow: hidden;
+}
+
+section.page-fin-jeu .corps .right{
+	width: 95%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	font-family: "capriola";
+}
+section.page-fin-jeu .corps .right .mots-restants{
+	background: rgba(250,210,175,0.74);
+	width: 95%;
+	height:75%;
+	box-sizing: border-box;
+	border-radius: 5px;
+	box-shadow: 2px 1px 3px #555;
+	padding: 1vw;
+}
+section.page-fin-jeu .corps .right .boutons{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	width: 95%;
+	height:15%;
+	margin-bottom: 1vh;
+}
+section.page-fin-jeu .corps .right .boutons .btn{
+	background: #2D9CDB;
+	border: none;
+	font-size: 3vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	border-radius: 0.5vw;
+	color: white;
+	font-family: "capriola";
+	position: relative;
+	box-shadow: 2px 1px 3px #555;
+	box-sizing: border-box;
+	cursor: pointer;
+	opacity: 0.87;
+	transition: all 0.3s ease;
+}
+section.page-fin-jeu .corps .right .boutons .btn:hover{
+	opacity: 1;
+}
+
+section.page-fin-jeu .pied{
+	color: white;
+	font-family: "capriola";
+	height: 5vh;
+	font-size: 2vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+section.page-fin-jeu .pied a{
+	color: inherit;
+}
+

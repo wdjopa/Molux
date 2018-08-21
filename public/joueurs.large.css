@@ -1,0 +1,694 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+::-webkit-scrollbar {
+    height:1em;
+    /* border-radius: 150vw; */
+    background:#CF8442;
+    width:0.5vw;
+}
+::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    background: beige;
+    margin: 1vw;
+
+    box-shadow: 0px 0px 2px transparent inset;
+    border-radius: 150vw;
+}
+ /*ascenseur*/
+::-webkit-scrollbar-thumb:hover {
+    box-shadow: none;
+    border: 2px solid #aaa;
+    background: #aaa;
+}
+section .valid-btn{
+
+	cursor:  pointer;
+	background: #2D9CDB;
+
+	margin: 0 1vw;
+	box-shadow: 2px 1px 3px #555;
+	border-radius: 0.5vw;
+	color: white;
+	font-family: "capriola";
+}
+
+section .valid-btn{
+
+	cursor:  pointer;
+	background: #2D9CDB;
+
+	margin: 0 1vw;
+	box-shadow: 2px 1px 3px #555;
+	border-radius: 0.5vw;
+	color: white;
+	font-family: "capriola";
+}
+
+
+
+
+body{
+	background: url("Images/background.png");
+}
+header{
+	background: #CF8442;
+	height: 15vh;
+	box-sizing: border-box;
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	box-shadow: 2px 0px 5px #888;
+	box-shadow: 2px 1px 3px #555;
+
+}
+header .titre{
+	padding: 2vh 3vw;
+	color: white;
+	font-size: 3.5vw;
+}
+header .tabs{
+	padding: 2vh 3vw;
+	margin-right: 1vw;
+	width: 55%;
+	color: white;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	height: 100%;
+}
+header .tabs .item{
+	width: 20%;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	text-align: center;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+}
+header .tabs .item:hover{
+	width: 20%;
+	text-align: center;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	background: rgba(100,30,60,0.15);
+
+}
+header .tabs .item.active-tab{
+	background:  #A3662F;
+}
+
+section{
+	background: rgba(114,72,34,0.45);
+	padding: 2vw;
+	font-family: "open sans";
+	color: #333;
+}
+section .navbar-search{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 10vh;
+	margin-bottom: 3vh;
+}
+section .navbar-search .formulaire{
+	width: 100%;
+	height: 90%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+}
+section .navbar-search .formulaire .champs{
+	background: rgba(255,239,224,0.7);
+	padding: 0 1.5vw;
+	box-sizing: border-box;
+	border-radius: 0.5vw;
+	width: 80%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	font-family: "capriola";
+	box-shadow: 2px 1px 3px #555;
+}
+section .navbar-search .formulaire .champs input{
+	width: 100%;
+	background: transparent;
+	border: none;
+	border-bottom: 2px solid #888;
+	padding: 1vw 1vw;
+	box-sizing: border-box;
+	font-family: "capriola";
+}
+section .navbar-search .logo{
+	width: 12.0%;
+}
+section .navbar-search .texte{
+	font-size: 1.62em;
+}
+
+section .default-btn{
+	cursor:  pointer;
+	background: #CF8442;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	height: 100%;
+	border-radius: 0.5vw;
+	padding: 0 1vw;
+	width: 16%;
+	box-shadow: 2px 1px 3px #555;
+	color: white;
+}
+
+section .bloc-joueurs{
+	background: #FFEFE0;
+	border-radius: 3px;
+	box-shadow: 0px 1px 3px black;
+	overflow: hidden;
+	height: 100vh;
+}
+section .bloc-joueurs .entete{
+	height: 10vh;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	font-family: "open sans";
+	color: rgb(105, 58, 17);
+	font-family: "capriola";
+
+}
+section .bloc-joueurs .entete .gauche{
+	width: 30%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.8vw;
+	box-shadow: 1px 0px 0px #4f4f4f;
+	background: #CF8442;
+	background-color: #55391F;
+	color: antiquewhite;
+}
+section .bloc-joueurs .entete .droite{
+	background-color: #55391F;
+	background: #CF8442;
+	color: antiquewhite;
+	width: 70%;
+	height: 100%;
+	font-size: 2vw;
+	font-size: 1.8vw;
+	padding: 0 2vw;
+	box-sizing: border-box; 
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0px 1px 0px #4f4f4f;
+
+}
+section .bloc-joueurs .entete .droite .create-btn{
+	height: 80%;
+	width: 30%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0px 0px 4px rgba(0,0,0,0.25);
+}
+section .bloc-joueurs .entete .droite .create-btn span{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.2vw;
+}	
+
+section .bloc-joueurs .corps{
+	width: 100%;
+	height: 90vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 1.2vw;
+}
+section .bloc-joueurs .corps .liste.contacts{
+	overflow: auto;	
+	height: 100%;
+	margin-top: 1px;
+	width: 30%;
+	box-sizing: border-box;
+
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	font-size: 1.2vw;
+}
+section .bloc-joueurs .corps .liste.contacts .resultats-recherche{
+	display: none;
+	background: #A3662F;
+	color: antiquewhite;
+	width: 100%;
+}
+section .bloc-joueurs .corps .liste.contacts .resultats-recherche .search-contact{
+
+	box-sizing: border-box;
+	background: rgba(255,246,237,0.839);
+	width: 100%;
+	font-family: "open sans";
+	padding: 2vh 2vw;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	margin: 1px 0;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	font-size: 1.2vw;
+
+	transition: all 0.4s ease;
+	color: #55391F;
+}
+section .bloc-joueurs .corps .liste.contacts .resultats-recherche .search-contact:hover{
+	background: transparent;
+	color: #E0E0E0;
+}
+section .bloc-joueurs .corps .liste.contacts .resultats-recherche .titre{
+	padding: 1vw;
+	font-family: "capriola";
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.2vw;
+}
+section .bloc-joueurs .corps .liste.contacts .contact{
+	height: 12vh;
+	box-sizing: border-box;
+	background: rgba(255,246,237,0.39);
+	width: 100%;
+	font-family: "open sans";
+	padding: 2vh 2vw;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	margin: 1px 0;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	font-size: 1.2vw;
+
+}
+section .bloc-joueurs .corps .liste.contacts .contact:hover{
+	/* box-shadow: 0px 0px 0px 1px black inset; */
+	/* background: rgba(163, 102, 47, 0.85); */
+	color: rgb(255,246,237);
+	background: #75593F;
+}
+section .bloc-joueurs .corps .liste.contacts .contact.active-contact{
+	background: #75593F;
+	color: white;
+}
+section .bloc-joueurs .corps .liste.contacts .contact .left{
+	width: 80%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	font-size: 1.2vw;
+}
+section .bloc-joueurs .corps .liste.contacts .contact .right{
+	width: 30%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.2vw;
+
+}
+section .bloc-joueurs .corps .liste.contacts .contact .right .notification{
+
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.2vw;
+	box-sizing: border-box;
+}
+section .bloc-joueurs .corps .liste.contacts .contact .right .notification .value{
+	background:chocolate;
+	box-shadow: 0px 1px 3px #333 inset;
+	padding: 0.5vh 0.75vw;
+	border-radius: 100vw;
+	color: white;
+	font-size: 1vw;
+	font-weight: 800;
+}
+
+section .bloc-joueurs .corps .messages-box{
+	background: #75593F;
+	width: 70%;
+	height: 100%;
+	box-shadow: 0px 4px 4px rgba(0,0,0,0.25) inset;
+	position: relative;
+	overflow: auto;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+}
+section .bloc-joueurs .corps .messages-box .default-page{
+	position: absolute;
+	right: 0;
+	top: 0;
+
+	opacity: 1;
+	color: rgba(255,246,237,0.89);
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	padding-bottom: 5vh; 
+	box-sizing: border-box;
+	font-size: 3vw;
+	font-weight: 700;
+	font-family: "macondo";
+	background-color: #55391F;
+
+	overflow: hidden;
+
+	width: 100%;
+	height: 100%;
+	transition: all 1s ease;
+}
+section .bloc-joueurs .corps .messages-box .chat-container{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+section .bloc-joueurs .corps .messages-box .chat-container .pattern{
+	background: url("Images/pattern.svg");
+}
+section .bloc-joueurs .corps .messages-box .chat-container .messages-container{
+	width: 100%;
+	height: 95%;
+	max-height: auto; 
+	padding: 1vw;
+	overflow: auto;
+	box-sizing: border-box;
+}
+section .bloc-joueurs .corps .messages-box .chat-container .messages-container .message{
+	width: 100%;
+	min-height: 10vh; 
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	margin: 1vh 0;
+	padding: 0 1vw;
+	box-sizing: border-box;
+}
+section .bloc-joueurs .corps .messages-box .chat-container .messages-container .message.send{
+	justify-content: flex-end;
+}
+section .bloc-joueurs .corps .messages-box .chat-container .messages-container .message.send .message-bloc{
+	text-align: right;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-end;
+}
+section .bloc-joueurs .corps .messages-box .chat-container .messages-container .message .message-container{
+	background: #E0E0E0;
+	padding: 1.5vh 1.2vw;
+	max-width: 75%;
+	text-align: left;
+
+	border-radius: 10px 0 10px 10px;
+	font-family: "capriola";
+	font-size: 1vw;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.25);
+}
+section .bloc-joueurs .corps .messages-box .chat-container .messages-container .message.receive .message-container{
+	border-radius: 0 10px 10px 10px;
+	background: #CF8442;
+	color: white;
+	overflow-wrap: break-word;
+}
+section .bloc-joueurs .corps .messages-box .chat-container .messages-container .message .status{
+	font-size: 0.7vw;
+	color: #dfdfdf;
+	font-weight: 100;
+	font-family: "open sans";
+	padding: 1vh; 
+}
+
+
+
+
+section .bloc-joueurs .corps .messages-box .chat-container .response{
+	background: #FFEFE0;
+	box-shadow: 1px 0px 0px 1px #75593F inset;
+
+	width: 100%;
+	max-height: 90%; 
+	min-height: 5%; 
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+section .bloc-joueurs .corps .messages-box .chat-container .response .box-emojis{
+	height: 0vh;
+}
+section .bloc-joueurs .corps .messages-box .chat-container .response .box-repondre-message{
+	height: 0vh;
+}
+section .bloc-joueurs .corps .messages-box .chat-container .response .box-reponses{
+	max-height: 50vh;
+	min-height: 6vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: flex-end;
+	padding: 2vh 1vw;
+	box-sizing: border-box;
+}
+section .bloc-joueurs .corps .messages-box .chat-container .response .box-reponses .texte-message{
+	min-height: 6vh;
+	max-height: 20vh;
+	width: 80%;
+}
+section .bloc-joueurs .corps .messages-box .chat-container .response .box-reponses .input-message{
+	min-height: 6vh;
+	max-height: 10vh;
+	overflow: auto;
+	background: whitesmoke;
+	box-sizing: border-box;
+	padding: 2vh;
+	font-family: "capriola";
+	font-size: 1vw;
+	color: #333;
+	width: 100%;
+	box-shadow: 0px 1px 1px rgba(0,0,0,0.25);
+	border-radius: 4px;
+
+}
+section .bloc-joueurs .corps .messages-box .chat-container .response .box-reponses .emoji-btn{
+	background: #CF8442;
+	width: 3vw;
+	height: 3vw;
+	border-radius: 3px;
+	display: flex;
+	flex-direction: column;
+	justify-content:center;
+	align-items: center;
+	box-sizing: border-box;
+	box-shadow: 0px 1px 1px rgba(0,0,0,0.25);
+	overflow: hidden;
+	cursor: pointer;
+}
+section .bloc-joueurs .corps .messages-box .chat-container .response .box-reponses .emoji-btn img{
+	width: 60%;
+	display: inline-block;
+}
+
+section .bloc-joueurs .corps .messages-box .chat-container .response .box-reponses .send-btn{
+	background: #2D9CDB;
+	width: 12%;
+	cursor: pointer;
+	box-shadow: 0px 1px 1px rgba(0,0,0,0.25);
+	height: 3vw;
+	border-radius: 3px;
+	display: flex;
+	flex-direction: column;
+	justify-content:center;
+	align-items: center;
+	box-sizing: border-box;
+	overflow: hidden;
+	color: white;
+}
+
+section .search-container{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 100;
+
+}
+section .search-container .cover{
+	background: rgba(0,0,0,0.25);
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	width: 100vw;
+	height: 100vh;
+	z-index: 0;
+}
+section .search-container .box{
+	background-color: antiquewhite;
+	border-radius: 4px;
+	box-shadow: 2px 1px 3px #555;
+	overflow: hidden;
+	width: 30%;
+	height: 60%;
+	z-index: 10;
+}
+section .search-container .box .titre{
+	background-color: #A3662F;
+	color: white;
+	font-size: 1.72vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 2px 0px 3px #555;
+	height: 15%;
+	font-family: "capriola"; 
+}
+section .search-container .box .corps{	
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	height: 85%;
+}
+
+section .search-container .box .corps .input{
+	height: 15%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+section .search-container .box .corps .input input{
+	border: none;
+	padding: 1vh;
+	box-sizing: border-box;
+	border-radius: 4px;
+	height: 70%;
+	font-size: 1vw;
+	font-family: 'capriola';
+	text-align: center;
+	box-shadow: 0px 0px 3px 1px #75593F;
+
+	width: 95%;
+}
+section .search-container .box .corps .resultats-recherche{
+	height: 85%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	
+	overflow: auto;
+}
+section .search-container .box .corps .resultats-recherche .search-contact{
+	border: 4px solid #A3662F;
+	border-radius: 4px;
+	width: 95%;
+	padding: 1vw;
+	box-sizing: border-box;
+	text-align: center;
+	font-family: "macondo";
+	color: white;
+	background: #A3662F;
+	font-size: 1.4vw;
+	margin: 1vh 0;
+	cursor: pointer;
+	transition: all .3s ease;
+}
+section .search-container .box .corps .resultats-recherche .search-contact:hover{
+	background-color: rgb(196, 121, 55);
+}
+
+
+
+
+
+
+
+footer{
+
+	background: rgba(114,72,34,0.45);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 10vh;
+	color: #FAF5F0;
+	font-size: 1vw;
+	font-family: "open sans";
+}
+footer a{
+	color: white;
+}

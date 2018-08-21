@@ -1,0 +1,138 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: url("Images/background.png");
+}
+.hide-on-med-and-up{
+	display: none;
+}
+header{
+	background: rgba(89,75,62,0.75);
+	text-shadow: 1px 1px 1px black;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 30vh;
+	color: white;
+	font-size: 7vw;
+	color: #FAF5F0;
+}
+section{
+	background: rgba(89,75,62,0.75);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	height: 63vh;
+	color: #FAF5F0;
+	font-weight: 100;
+}
+section .bienvenue{
+	font-size: 3vw;
+	color: #FAF5F0;
+	font-weight: 100;
+}
+section .text{
+	font-size: 1.3vw;
+	color: #FAF5F0;
+	font-weight: 100;
+}
+section .form-box{
+	height: 50%;
+	width: 22%;
+	position: relative;
+}
+section .form{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	transform: scale(1);
+	position: absolute;
+	transition: all 0.3s ease;
+}
+section .form.type-2{
+	transform: scale(0);
+}
+section .form .champ{
+	background: rgba(46,38,31,0.66);
+	width: 100%;
+	border: none;
+	font-family: capriola;
+	border-radius: 5px;
+	height: 25%;
+	color: white;
+	padding: 2vw;
+}
+section .form .champ.question{
+	padding: 0 1vw;
+}
+section .form .champ.confirmation{
+	padding: 0 1vw;
+}
+section .form .btn{
+	background: #2D9CDB;
+	width: 100%;
+	border: none;
+	font-family: capriola;
+	border-radius: 5px;
+	height: 25%;
+	color: white;
+	padding: 5px;
+	font-size: 1.2vw;
+	cursor: pointer;
+}
+section .form .btn.retour{
+	background: #ccc;
+	color: #777	;
+}
+section .form .btn:hover{
+	opacity: 0.8;
+}
+
+section .form .btn .loader{
+	width: 20%;
+}
+
+section .statistiques{
+	height: 20%;
+
+	font-weight: 100;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 1px solid white;
+}
+section .statistiques h3{
+	padding-bottom: 1vh;
+	font-weight: 100;
+	font-size: 2vw;
+
+}
+
+footer{
+
+	background: rgba(89,75,62,0.75);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 7vh;
+	color: #FAF5F0;
+	font-size: 0.7vw;
+}
+footer a{
+	color: white;
+}
+
+.red{
+	color: coral;
+}

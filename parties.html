@@ -1,0 +1,937 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>MOLUX - Parties</title>
+	<link rel="stylesheet" type="text/css" href="Fonts/polices.css">
+	<meta charset="utf-8">
+	<link rel="stylesheet" media="screen and (min-width: 750px)" href="parties.large.css" type="text/css" />
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet"  media="screen and (max-width: 750px)" href="materialize.css">
+    <link rel="stylesheet" media="screen and (max-width: 750px)" href="parties.min.css" type="text/css" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="theme-color" content="#fff">
+	<meta name="application-name">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-title">
+	<meta name="description" content="Jeu de lettre en réseau. Possibilité de jouer à plusieurs. Principe : Former le plus le mot avec les lettres données. Jouez gratuitement sur Tchatat.fr/molux"/>
+	<meta property="og:type" content="game" />
+	<meta property="og:title" content="Molux, Jeu de lettres en réseau - Parties" />
+	<meta property="og:description" content="Jeu de lettre en réseau. Possibilité de jouer à plusieurs. Principe : Former le plus le mot avec les lettres données. Jouez gratuitement sur Tchatat.fr/molux" />
+	<meta property="og:url" content="https://https://molux.eu-4.evennode.com/index.html/" />
+	<meta property="og:site_name" content="Molux" />
+	<!-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+	<script>
+	  var OneSignal = window.OneSignal || [];
+	  OneSignal.push(function() {
+		OneSignal.init({
+		  appId: "81d9b0bd-15f6-49d4-a790-ad7d372b9c33",
+		  autoRegister: false,
+		  notifyButton: {
+			enable: true,
+		  },
+		});
+	  });
+	</script> -->
+</head>
+<body>
+	<audio src="sound.mp3" class="sonnerie"></audio>
+	<div class="small-screen hide-on-med-and-up">
+		
+		<div class="chargement-accueil">
+			<h2>Chargement ...</h2>
+			<img src="Images/texte.svg" alt="chargement">
+			<button onclick="document.location.href='index';" class="btn-large marron">Actualiser</button>
+		</div>
+
+		<div id="bug_report" class="bug-btn tooltipped waves-effect z-depth-2 deep-purple darken-4" data-position="bottom" data-tooltip="Cliquez pour signaler un bug" onclick="signal_bug()">
+				<i class="material-icons white-text">bug_report</i>
+		</div>
+
+		<div id="modal2" class="modal appeler">
+		<div class="modal-content">
+			<h4>Appel</h4>
+			<textarea id="message-appel" cols="30" rows="10" placeholder="Joindre un message à l'appel"></textarea>
+			<p>Etes-vous sur de vouloir l'appeler ?</p>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-close waves-effect waves-red btn-flat">Non</a>
+			<a href="#!" class="modal-close waves-effect waves-green yes btn-flat" onclick="lancerAppel()">Oui</a>
+		</div>
+		</div>
+
+		<div id="modal3" class="modal update">
+			<div class="modal-content">
+				<h4>ATTENTION</h4>		
+				<p>La version de l'applicaton que vous utilisez est obsolète</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class="modal-close waves-effect waves-green yes btn-flat" onclick="updateAppli()">METTRE À JOUR</a>
+			</div>
+		</div>
+
+		<div id="modal2" class="modal recevoir">
+		<div class="modal-content">
+			<h4>Appel</h4>
+			<p></p>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-close waves-effect waves-green yes btn-flat" onclick="appelRecu()">Reçu</a>
+		</div>
+		</div>
+			
+		
+		<div id="modal3" class="modal deconnexion">
+			<div class="modal-content">
+				<h4>Suppression</h4>
+				<p>Etes-vous sur de vouloir vous déconnecter ? <br>Toutes vos données seront perdues</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class="modal-close waves-effect waves-green yes btn-flat" >Non</a>
+				<a href="#!" class="modal-close waves-effect waves-green yes btn-flat" onclick="deconexion()">Oui</a>
+			</div>
+		</div>
+			
+		
+		<header>
+			<div class="navbar-fixed">
+		  <nav class=" nav-extended macondo marron">
+		    <div class="nav-wrapper">
+		      <a href="#" style="margin-left: 2vw;" class="brand-logo left" >MOLUX</a>
+			  <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+		    </div>
+		    <div class="nav-content capriola">
+			      <ul class="tabs tabs-transparent">
+			        <li class="tab enattente-tab" onclick="tab('enattente')"><a class="active" href="#enattente">EN ATTENTE</a></li>
+			        <li class="tab encours-tab" onclick="tab('encours')"><a class="" href="#encours">EN COURS</a></li>
+			        <li class="tab joueur-tab" onclick="tab('joueurs')"><a class="" href="#joueurs">JOUEURS</a></li>
+			      </ul>
+			    </div>
+			  </nav>
+			</div>
+			 <ul id="slide-out" class="sidenav">
+			    <li><div class="user-view">
+			      <div class="background">
+			        <img src="Images/background.png">
+			      </div>
+			      <a href="#user"><div class="circle circle2 center marron macondo">D</div></a>
+			      <a href="#name"><span class="white-text name pseudo"></span></a>
+			      <a href="#email"><span class="white-text email tel"></span></a>
+			    </div></li>
+			    <li><a class="waves-effect" href=""><i class="material-icons">home</i>Accueil</a></li>
+			    <li><a class="waves-effect" href="#!" onclick="ouvrirParametres()"><i class="material-icons">add</i>Créer une partie</a></li>
+			    <li><a class="waves-effect" href="joueurs"><i class="material-icons">group</i>Messages</a></li>
+			    <li><a class="waves-effect" href="compte"><i class="material-icons">settings</i>Paramètres</a></li>
+			    <li><a class="waves-effect" href="#!" onclick="quitter()"><i class="material-icons">refresh</i>Actualiser</a></li>
+			    <li><a class="waves-effect" href="#!" onclick="share()"><i class="material-icons">share</i>Partager</a></li>
+			    <li><a class="waves-effect" href="#!" onclick="deconnexionVerif()"><i class="material-icons">power_settings_new</i>Deconnexion</a></li>
+			    <li><div class="divider"></div></li>
+			    <li><a class="subheader">Copyright &#169; Tchat'At Inc 2018.</a></li>
+			  </ul>
+			        
+		</header>
+		
+		<div class="second-screen">
+			<div class="cover" onclick="fermerParametres()"></div>
+			<div class="cadre parametres">
+				<div class="header">
+					<span class="titre">
+						Paramètres
+					</span>
+				</div>
+				<div class="body">
+						<div class="row langue">
+							<div class="col text"><span class="aide">? <div class="help-container"> <u>Dictionnaire de jeu</u> : Définit dans quelle langue les mots seront vérifiés. </div></span>Dictionnaire de jeu</div>
+							<div class="col vals">
+								<span class="left arrow" onclick="changeLangue()"><</span>
+								<span class="val">Francais</span>
+								<span class="right arrow" onclick="changeLangue()">></span>
+							</div>
+						</div>
+						<div class="row temps">
+							<div class="col text"> <span class="aide">? <div class="help-container">Il s'agit du temps qu'auront les participants pour former le maximum de mots avec les lettres qui leur seront fournies.</div></span>Temps de jeu (en sec.)</div>
+							<div class="col vals">
+								<span class="left arrow" onclick="changeTime('-')"><</span>
+								<span class="val">180</span>
+								<span class="right arrow" onclick="changeTime('+')">></span>
+							</div>
+						</div>
+						<div class="row pluralite">
+							<div class="col text"><span class="aide">? <div class="help-container">La pluralité donne la possibilité d'utiliser plusieurs fois la même lettre.</div></span>Pluralité </div>
+							<div class="col vals">
+								<span class="left arrow" onclick="changePluralite()"><</span>
+								<span class="val">Oui</span>
+								<span class="right arrow" onclick="changePluralite()">></span>
+							</div>
+						</div>
+						<div class="row mode">
+							<div class="col text"><span class="aide">? <div class="help-container"><u>Mode Classique</u> : Le jeu se fait en un tour. Le gagnant est le joueur qui aura le plus de points.<br><br><u>Mode Tournoi</u>: Mini tournoi entre les participants. Il se deroule en plusieurs manches. A chaque tour, le dernier joueur est éliminé, le gagnant est le dernier restant. </div></span>Mode de jeu </div>
+							<div class="col vals">
+								<span class="left arrow" onclick="changeMode()"><</span>
+								<span class="val">Classique</span>
+								<span class="right arrow" onclick="changeMode()">></span>
+							</div>
+						</div>
+						<div class="row securite">
+							<div class="col text"> <span class="aide">? <div class="help-container">Clé permettant d'accéder à la partie. Vous devez la communiquer à tous les contacts qui souhaitent participer.</div></span>Sécurité</div>
+							<div class="col vals">
+								<span class="val"><input type="text" class="key" placeholder="Clé"></span>
+								<span class="right btnt"><button onclick="genererCle()">Générer</button></span>
+							</div>
+						</div>
+						<div class="row btns">
+							<button class="btn cancel" onclick="fermerParametres()">Annuler</button>
+							<button class="btn valid" onclick="creer_partie()">Valider</button>
+						</div>
+				</div>
+			</div>
+			<div class="cadre password">
+				<div class="header">
+					<span class="titre">
+						Partie sécurisée
+					</span>
+				</div>
+				<div class="body">
+						<div class="row vertical">
+							<div class="col text">Cette partie est sécurisée. Veuillez entrer la clé pour pouvoir joindre la partie. Vous pouvez la demander au créateur de la partie.</div>
+							<span class="erreur"></span>
+							<div class="col vals">
+								<input type="text" class="champ pass" id="password" placeholder="Clé de partie"/>
+							</div>
+						</div>
+						<div class="row btns">
+							<button class="btn cancel" onclick="fermerParametres()">Annuler</button>
+							<button class="btn valid" onclick="validPass()">Valider</button>
+						</div>
+				</div>
+			</div>
+		</div>
+
+		<div style="margin-bottom: 8vh;"></div>
+		
+		<a id="new_game" onclick="ouvrirParametres()" class="create valid-btn btn-floating btn-large waves-effect waves-light marron" style="position: fixed; right: 2vh; bottom: 2vh;"><i class="material-icons">add</i></a>
+		<div class="marron tap-target" data-target="new_game">
+				<div class="tap-target-content white-text">
+					<h5>Astuce</h5>
+					<p>Cliquez ici pour pouvoir créer une partie ...</p>
+				</div>
+			</div>
+		<section id="enattente" class="section page-creation enattente">
+			
+			
+			<div class="container">
+				<div class="parties capriola">
+				<h6 class="white-text">Parties en attente de joueurs </h6>
+				<div class="container-parties">
+					<div class="aucune-partie">Aucune partie n'a encore été proposée. Proposez une en cliquant sur le bouton <em>+</em>
+					</div>
+					<div class="les-parties"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="joueurs" class="section page-joueurs joueurs">
+		
+			<div class="container">
+				<div class="parties capriola">
+				<h6 class="white-text">Joueurs connectés </h6>
+				<div class="container-parties">
+					<div class="aucune-partie">Aucun joueur n'est connecté en ce moment.
+					</div>
+					<div class="les-joueurs"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section id="encours" class="section page-visionnage encours">
+			
+				<div class="container">
+					<div class="parties capriola">
+					<h6 class="white-text">Parties en cours </h6>
+					<div class="container-parties">
+						<div class="aucune-partie">Aucune partie n'est en cours de jeu.
+						</div>
+						<div class="les-parties"></div>
+						</div>
+					</div>
+				</div>
+			</section>
+		
+			<section class="section page-partie">
+			<div onclick="openChat()" class="live-chat-btn">
+				<span class="notif"></span>
+				<span class="logo">
+					<img src="Images/chat.png" alt="">
+				</span>
+			</div>
+			<div class="live-chat">
+				<div class="cover" onclick="closeChat()"></div>
+				<div class="box-messages">
+					<div class="entete">
+						<h2 class="titre">Messagerie</h2>
+						<span class="close" onclick="closeChat()">✕</span>
+					</div>
+					<div class="chat">
+						<div class="contain">
+							
+						</div>
+					</div>
+					<div class="answer-box">
+						<div class="level-1"></div>
+						<div class="level-2">
+							<!--<div class="emoji">
+								<img src="Images/svg/smile.svg"/>
+							</div>-->
+							<div class="parent-response">
+								<div class="response-input" data-placeholder='Entrez votre message' contenteditable="true"></div>
+							</div>
+							<div class="send-btn active-btn capriola" onclick="sendMessageInParties()"><i class="material-icons">send</i></div>							
+						</div>
+					</div> 
+				</div>
+			</div>
+			<div class="header-container">
+				<div class="header">
+					<div class="level-1">
+						<div class="titre macondo">MOLUX</div>
+						<div class="close croix" onclick="fermer_partie()">✕</div>
+					</div>
+					<div class="level-2">
+						<div class="texte capriola">En attente des joueurs ...</div>
+					</div>
+				</div>
+			</div>
+			<div class="niveau-1 admin">
+				<button class="btn large play" onclick="lancer_partie()">
+					<span class="texte">LANCER</span>
+				</button>
+				<!--
+				<button class="btn medium join" onclick="">
+					<span class="texte">JOINDRE UN CONTACT</span>
+				</button>-->
+				<button class="btn medium messages" onclick="openChat()">
+					<span class="texte">MESSAGES</span>
+				</button>
+			</div>
+			<div class="niveau-2">
+				<h3 class="titre">Liste des participants</h3>
+				<div class="container-niveau-2"><!-- 
+					<div class="personnal-card">
+						<span class="retirer">Retirer</span>
+						<span class="nom">DJOPA</span>	
+						<span class="niveau">Niveau 2</span>	
+					</div>  -->
+				</div>
+				<div class="img-loader">
+					<span>
+						Vous pouvez patienter pendant que des joueurs se joignent à votre partie ...
+					</span>
+					<img src="Images/cercle.svg" alt="loader">
+				</div>
+			</div>
+		</section>
+		
+		<section class="section page-jeu">
+			<div class="regles">
+				<h4>Préparation de votre partie ...</h4>
+				<img class="loader" src="Images/texte.svg"/>				
+				<div class="regle">
+					<div class="bloc">
+						<h2 class="titre">Règles</h2>
+						<div class="par">
+							Formez le plus de mots possibles avec les lettres qui vous sont fournies.
+							<br><br>
+							Vous disposez d'un certain temps pour trouver le plus de mots possibles.
+							<br><br>
+							Plus le mot est long, plus vous avez de points.
+							<br><br>
+							Exemple de lettres proposées : 
+							<br>
+							<div class="lettres-proposes">
+								<span class="lettre">F</span>
+								<span class="lettre">A</span>
+								<span class="lettre">B</span>
+								<span class="lettre">E</span>
+								<span class="lettre">R</span>
+								<span class="lettre">A</span>
+								<span class="lettre">R</span>
+							</div>
+							<br>
+							Exemples de mots formés :
+							<br>
+							<div class="lettres-proposes">
+								<span class="lettre">FER</span>
+								<span class="lettre">ARBRE</span>
+								<span class="lettre">BARRE</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="loading">
+					<button class="commencer inactive">COMMENCER</button>
+				</div>
+			</div>
+			<div class="header-container">
+				<div class="header">
+					<div class="titre macondo">MOLUX</div>
+					<div class="texte capriola">
+						<div class="temps">
+							<span class="texte">Temps restant:</span>
+							<span class="valeur">3'00</span>
+						</div>
+					</div>
+					<!-- <div class="close croix" onclick="fermer_partie()">✕</div> -->
+				</div>
+			</div>
+			<div class="corps">
+				<div class="entete">
+					<!-- <div class="rang">
+						<span class="texte">Rang:</span>
+						<span class="valeur">6/6</span>
+					</div> 
+					<div class="min-possibilites">
+						<span class="texte">Nombre minimum de possibilités:</span>
+						<span class="valeur"></span>
+					</div>
+				-->
+					<div class="points">
+						<span class="texte">Points:</span>
+						<span class="valeur">0</span>
+					</div>
+				</div>
+				<div class="niveau-1 proposes">
+					<div class="proposition">
+						<div class="instruction">
+							<span class="valeur">Cliquez sur une lettre pour la sélectionner ou la désélectionner</span>
+						</div>
+						<div class="reste">
+							<div class="erreur">
+								<span class="valeur">Le mot que vous avez rentré n'est pas valide !</span>
+							</div>
+							<div class="mot">
+								<!-- <span class="lettre">
+									<span class="valeur">F</span>
+								</span> -->
+							</div>
+						</div>
+					</div>
+					<h2>Mots formés</h2>
+					<div class="mots">
+						<!-- <div class="mot">
+							<span class="valeur">BARRE</span>
+						</div> -->
+					</div>
+				</div>
+				<div class="niveau-2">
+					<div class="lettres">
+						<!-- <span class="lettre">
+							<span class="valeur">D</span>
+						</span> -->
+					</div>
+					<div class="bouton">
+						<button class="valid btn" onclick="valider_proposition()">VALIDER</button>
+						<button class="leave btn" onclick="mix()"><i class="material-icons">autorenew</i></button>
+						<button class="reset btn" onclick="retirerTout()"><i class="material-icons">backspace</i></button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section page-fin-jeu">
+				<div class="header">
+					<!-- <div class="titre macondo">Molux</div> -->
+					<div class="texte capriola">- Game Over -</div>
+				</div>
+				<div class="corps">
+					<div class="left">
+						<div class="mes-mots">
+							<div class="titre">Mots formés (<span class="total-mots">10</span>)</div>
+							<div class="container self mots">
+		<!-- 						<div class="mot">
+									<span class="valeur">BARRE</span>
+								</div> -->
+							</div>
+						</div>
+						<div class="classement">
+							<div class="titre">Classement</div>
+							<div class="container c-classement">
+								 <!--<div class="user">
+									<span class="num">1.</span>
+									<span class="nom">Djopa Tchatat</span>
+									<span class="points">46854 pts</span>
+								</div>-->
+							</div>
+						</div>
+					</div>
+					<div class="right">
+						<div class="mots-restants">
+							<div class="titre">Tous les mots formés (<span class="total-mots">10</span>)</div>
+							<div class="container all mots">
+		<!-- 					<div class="mot">
+									<span class="valeur">BARRE</span>
+								</div> -->
+							</div>
+						</div>
+						<div class="boutons">
+							<button class="leave btn" onclick="quitter()">QUITTER</button>
+						</div>
+					</div>
+				</div>
+				<div class="pied">
+					<span class="copyright">
+						Copyright &#169; <a target="_blank" href="https://www.tchatat.fr">Tchat'At Inc</a>, 2018.
+					</span>
+				</div>
+		</section>
+		
+		<div class="footer">
+		  <div class="container">
+			  <div class="divider"></div>
+			  <div style="margin-bottom: 2vh;"></div>
+			  <div class="center white-text">
+			  	Tous Droits Réservés &#169; <a href="https://www.tchatat.fr/">Tchat'At</a> Inc 2018.
+			  </div>
+			  </div>
+			  <div style="margin-bottom: 3vh;"></div>
+		</div>
+	</div>
+	
+	<div class="large-screen hide-on-small-only">
+
+		<div class="second-screen">
+			<div class="cover" onclick="fermerParametres()"></div>
+			<div class="cadre parametres">
+				<div class="header">
+					<span class="titre">
+						Paramètres
+					</span>
+				</div>
+				<div class="body">
+						<div class="row temps">
+							<div class="col text">Temps de jeu (en sec.) <span class="aide">? <div class="help-container">r il s'agit du temps qu'auront les participants pour former le maximum de mots avec les lettres qui leur seront fournies.</div></span></div>
+							<div class="col vals">
+								<span class="left arrow" onclick="changeTime('-')"><</span>
+								<span class="val">180</span>
+								<span class="right arrow" onclick="changeTime('+')">></span>
+							</div>
+						</div>
+						<div class="row pluralite">
+							<div class="col text">Pluralité <span class="aide">? <div class="help-container">La pluralité donne la possibilité d'utiliser plusieurs fois la même lettre.</div></span></div>
+							<div class="col vals">
+								<span class="left arrow" onclick="changePluralite()"><</span>
+								<span class="val">Oui</span>
+								<span class="right arrow" onclick="changePluralite()">></span>
+							</div>
+						</div>
+						<div class="row mode">
+							<div class="col text">Mode de jeu <span class="aide">? <div class="help-container"><u>Mode Classique</u> : Le jeu se fait en un tour. Le gagnant est le joueur qui aura le plus de points.<br><br><u>Mode Tournoi</u>: Mini tournoi entre les participants. Il se deroule en plusieurs manches. A chaque tour, le dernier joueur est éliminé, le gagnant est le dernier restant. </div></span></div>
+							<div class="col vals">
+								<span class="left arrow" onclick="changeMode()"><</span>
+								<span class="val">Classique</span>
+								<span class="right arrow" onclick="changeMode()">></span>
+							</div>
+						</div>
+						<div class="row langue">
+							<div class="col text">Dictionnaire de jeu <span class="aide">? <div class="help-container"><u>Dictionnaire</u> : Définit dans quelle langue les mots seront vérifiés. </div></span></div>
+							<div class="col vals">
+								<span class="left arrow" onclick="changeLangue()"><</span>
+								<span class="val">Francais</span>
+								<span class="right arrow" onclick="changeLangue()">></span>
+							</div>
+						</div>
+						<div class="row securite">
+							<div class="col text">Sécurité <span class="aide">? <div class="help-container">Clé permettant d'accéder à la partie. Vous devez la communiquer à tous les contacts qui souhaitent participer.</div></span></div>
+							<div class="col vals">
+								<span class="val"><input type="text" class="key" placeholder="Clé"></span>
+								<span class="right btn"><button onclick="genererCle()">Générer</button></span>
+							</div>
+						</div>
+						<div class="row btns">
+							<button class="btn cancel" onclick="fermerParametres()">Annuler</button>
+							<button class="btn valid" onclick="creer_partie()">Valider</button>
+						</div>
+				</div>
+			</div>
+			<div class="cadre password">
+				<div class="header">
+					<span class="titre">
+						Partie sécurisée
+					</span>
+				</div>
+				<div class="body">
+						<div class="row vertical">
+							<div class="col text">Cette partie est sécurisée. Veuillez entrer la clé pour pouvoir joindre la partie. Vous pouvez la demander au créateur de la partie.</div>
+							<span class="erreur"></span>
+							<div class="col vals">
+								<input type="text" class="champ pass" id="password" placeholder="Clé de partie"/>
+							</div>
+						</div>
+						<div class="row btns">
+							<button class="btn cancel" onclick="fermerParametres()">Annuler</button>
+							<button class="btn valid" onclick="validPass()">Valider</button>
+						</div>
+				</div>
+			</div>
+		</div>
+
+		<header>
+			<div class="titre macondo">MOLUX</div>
+			<div class="tabs capriola">
+				<div class="item active-tab" onclick="ouvrir('parties')">
+					<span class="niveau-1">PARTIES</span>
+					<span class="niveau-2"></span>
+				</div>
+				<div class="item header-joueurs" onclick="ouvrir('joueurs')">
+					<span class="niveau-1">JOUEURS</span>
+					<span class="niveau-2">
+					</span>
+				</div>
+				<div class="item" onclick="ouvrir('compte')">
+					<span class="niveau-1">COMPTE</span>
+					<span class="niveau-2"></span>
+				</div>
+				<div class="item" onclick="deconnexion()">
+					<span class="niveau-1">QUITTER</span>
+					<span class="niveau-2"></span>
+				</div>
+			</div>
+		</header>
+		<section class="section page-creation">
+			<div class="navbar-search">
+				<div class="formulaire">
+					<div class="champs">
+						<select class="filter">
+							<option value="date">Par date</option>
+							<option value="nom">Par nom</option>
+							<option value="niveau">Par niveau</option>
+						</select>
+						<input type="search" class="name" name="nom" placeholder="Entrez un nom d'admin"/>
+					</div>
+					<div class="search-btn default-btn">
+						<img class="logo" src="Images/search.png"/>
+						<span class="texte capriola">Rechercher</span>
+					</div>
+				</div>
+				<div class="create valid-btn" onclick="creer_partie()">
+					<span class="texte">Créer une partie</span>
+				</div>
+			</div>
+			<div class="parties capriola">
+				<h2 class="titre">Parties en attente de joueurs</h2>
+				<div class="container-parties">
+					<div class="aucune-partie">Aucune partie n'a encore été proposée. Proposez une en cliquant sur le bouton <em>Créer une partie</em></div>
+					<div class="les-parties">
+						
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="section page-partie">
+			<div onclick="openChat()" class="live-chat-btn">
+				<span class="notif"></span>
+				<span class="logo">
+					<img src="Images/chat.png" alt="">
+				</span>
+			</div>
+			<div class="live-chat">
+				<div class="cover" onclick="closeChat()"></div>
+				<div class="box-messages">
+					<div class="entete">
+						<h2 class="titre">Messagerie</h2>
+						<span class="close" onclick="closeChat()">✕</span>
+					</div>
+					<div class="chat">
+						<div class="contain">
+							
+						</div>
+					</div>
+					<div class="answer-box">
+						<div class="level-1"></div>
+						<div class="level-2">
+							<div class="emoji">
+								<img src="Images/svg/smile.svg"/>
+							</div>
+							<div class="response-input" data-placeholder='Entrez votre message' contenteditable="true"></div>
+							<div class="send-btn active-btn capriola" onclick="sendMessageInParties()">Envoyer</div>							
+						</div>
+					</div> 
+				</div>
+			</div>
+			<div class="header-container">
+				<div class="header">
+					<div class="titre macondo">MOLUX</div>
+					<div class="texte capriola">En attente des joueurs ...</div>
+					<div class="close croix" onclick="fermer_partie()">✕</div>
+				</div>
+			</div>
+			<div class="niveau-1 admin">
+				<button class="btn large play" onclick="lancer_partie()">
+					<span class="texte">LANCER LA PARTIE</span>
+				</button>
+				<button class="btn medium join" onclick="invite()">
+					<span class="texte">JOINDRE UN CONTACT</span>
+				</button>
+				<button class="btn medium messages" onclick="openChat()">
+					<span class="texte">OUVRIR LES MESSAGES</span>
+				</button>
+			</div>
+			<div class="niveau-2">
+				<h3 class="titre">Liste des participants</h3>
+				<div class="container-niveau-2"><!-- 
+					<div class="personnal-card">
+						<span class="retirer">Retirer</span>
+						<span class="nom">DJOPA</span>	
+						<span class="niveau">Niveau 2</span>	
+					</div>  -->
+				</div>
+				<div class="img-loader">
+					<span>
+						Vous pouvez patienter pendant que des joueurs se joignent à votre partie ...
+					</span>
+					<img src="Images/cercle.svg" alt="loader">
+				</div>
+			</div>
+		</section>
+		<section class="section page-jeu">
+			<div class="regles">
+				<div class="regle">
+					<div class="bloc">
+						<h2 class="titre">Règles</h2>
+						<div class="par">
+							Formez le plus de mots possibles avec les lettres qui vous sont fournies.
+							<br><br>
+							Vous disposez d'un certain temps pour trouver le plus de mots possibles.
+							<br><br>
+							Plus le mot est long, plus vous avez de points.
+							<br><br>
+							Exemple de lettres proposées : 
+							<br>
+							<div class="lettres-proposes">
+								<span class="lettre">F</span>
+								<span class="lettre">A</span>
+								<span class="lettre">B</span>
+								<span class="lettre">E</span>
+								<span class="lettre">R</span>
+								<span class="lettre">A</span>
+								<span class="lettre">R</span>
+							</div>
+							<br>
+							Exemples de mots formés :
+							<br>
+							<div class="lettres-proposes">
+								<span class="lettre">FER</span>
+								<span class="lettre">ARBRE</span>
+								<span class="lettre">BARRE</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="loading">
+					<h4>Préparation de votre partie ...</h4>
+					<img class="loader" src="Images/texte.svg"/>
+					<button class="commencer inactive">COMMENCER</button>
+				</div>
+			</div>
+			<div class="header-container">
+				<div class="header">
+					<div class="titre macondo">MOLUX</div>
+					<div class="texte capriola">
+						<div class="temps">
+							<span class="texte">Temps restant:</span>
+							<span class="valeur">3'00</span>
+						</div>
+					</div>
+					<!-- <div class="close croix" onclick="fermer_partie()">✕</div> -->
+				</div>
+			</div>
+			<div class="corps">
+				<div class="entete">
+					<!-- <div class="rang">
+						<span class="texte">Rang:</span>
+						<span class="valeur">6/6</span>
+					</div> 
+					<div class="min-possibilites">
+						<span class="texte">Nombre minimum de possibilités:</span>
+						<span class="valeur"></span>
+					</div>
+				-->
+					<div class="points">
+						<span class="texte">Points:</span>
+						<span class="valeur">0</span>
+					</div>
+				</div>
+				<div class="niveau-1 proposes">
+					<div class="proposition">
+						<div class="instruction">
+							<span class="valeur">Cliquez sur une lettre pour la sélectionner ou la désélectionner</span>
+						</div>
+						<div class="reste">
+							<div class="erreur">
+								<span class="valeur">Le mot que vous avez rentré n'est pas valide !</span>
+							</div>
+							<div class="mot">
+								<!-- <span class="lettre">
+									<span class="valeur">F</span>
+								</span> -->
+							</div>
+						</div>
+					</div>
+					<h2>Mots formés</h2>
+					<div class="mots">
+						<!-- <div class="mot">
+							<span class="valeur">BARRE</span>
+						</div> -->
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+					</div>
+				</div>
+				<div class="niveau-2">
+					<div class="lettres">
+						<!-- <span class="lettre">
+							<span class="valeur">D</span>
+						</span> -->
+					</div>
+					<div class="bouton">
+						<button class="valid btn" onclick="valider_proposition()">VALIDER</button>
+						<button class="reset btn" onclick="retirerTout()">EFFACER</button>
+						<button class="leave btn" onclick="mix()">MELANGER</button>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="section page-fin-jeu">
+			<div class="header">
+				<!-- <div class="titre macondo">Molux</div> -->
+				<div class="texte capriola">- Game Over -</div>
+			</div>
+			<div class="corps">
+				<div class="left">
+					<div class="mes-mots">
+						<div class="titre">Mots formés (<span class="total-mots">10</span>)</div>
+						<div class="container self mots">
+	<!-- 						<div class="mot">
+								<span class="valeur">BARRE</span>
+							</div> -->
+						</div>
+					</div>
+					<div class="classement">
+						<div class="titre">Classement</div>
+						<div class="container c-classement">
+							<!-- <div class="user">
+								<span class="num">1.</span>
+								<span class="nom">Djopa Tchatat</span>
+								<span class="points">46854 pts</span>
+							</div> -->
+						</div>
+					</div>
+				</div>
+				<div class="right">
+					<div class="mots-restants">
+						<div class="titre">Tous les mots formés (<span class="total-mots">10</span>)</div>
+						<div class="container all mots">
+	<!-- 					<div class="mot">
+								<span class="valeur">BARRE</span>
+							</div> -->
+						</div>
+					</div>
+					<div class="boutons">
+						<button class="leave btn" onclick="quitter()">QUITTER</button>
+					</div>
+				</div>
+			</div>
+			<div class="pied">
+				<span class="copyright">
+					Copyright &#169; <a target="_blank" href="https://www.tchatat.fr">Tchat'At Inc</a>, 2018.
+				</span>
+			</div>
+		</section>
+		<footer>
+			<hr>
+			<span class="copyright">
+				Copyright &#169; <a target="_blank" href="https://www.tchatat.fr">Tchat'At Inc</a>, 2018.
+			</span>
+		</footer>
+		<audio class="audio tonalite"></audio>
+		<audio class="audio background"></audio>
+	</div>
+	<iframe style="overflow: hidden;width:0;border:none;height: 0;"></iframe>
+	<script src="js/jquery.js"></script>
+	<script src="socket.io/socket.io.js"></script>
+	<script src="js/dico.js"></script>
+	<script src="js/dico7lettres.js"></script>
+	<script src="js/dicoAnglais.js"></script>
+    <script src="js/materialize.js"></script>	
+	<script src="script.js"></script>
+	<script src="parties.js"></script>
+	<script type="text/javascript">
+		//setTimeout(function(){$(".large-screen .page-partie").fadeIn()},100);
+		/*function closeChat(){
+			$(".live-chat").fadeOut();
+		}
+		function openChat(){
+			$(".live-chat").fadeIn();
+		}*/
+	</script>		
+</body>
+</html>

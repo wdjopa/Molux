@@ -1,0 +1,187 @@
+<html>
+<head>
+	<title>Joueurs</title>
+	<link rel="stylesheet" type="text/css" href="Fonts/polices.css">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="joueurs.large.css">
+	<meta charset="utf-8">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="theme-color" content="#fff">
+	<meta name="application-name">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-title">
+	<meta name="description" content="Jeu de lettre en réseau. Possibilité de jouer à plusieurs. Principe : Former le plus le mot avec les lettres données. Jouez gratuitement sur Tchatat.fr/molux"/>
+	<meta property="og:type" content="game" />
+	<meta property="og:title" content="Molux, Jeu de lettres en réseau - Joueurs" />
+	<meta property="og:description" content="Jeu de lettre en réseau. Possibilité de jouer à plusieurs. Principe : Former le plus le mot avec les lettres données. Jouez gratuitement sur Tchatat.fr/molux" />
+	<meta property="og:url" content="https://https://molux.eu-4.evennode.com/index.html/" />
+	<meta property="og:site_name" content="Molux" />
+	<!-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  var OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "81d9b0bd-15f6-49d4-a790-ad7d372b9c33",
+      autoRegister: false,
+      notifyButton: {
+        enable: true,
+      },
+    });
+  });
+</script> -->
+</head>
+<body>
+	<header>
+		<div class="titre macondo">MOLUX</div>
+		<div class="tabs capriola">
+			<div class="item" onclick="ouvrir('parties')">
+				<span class="niveau-1">PARTIES</span>
+				<span class="niveau-2"></span>
+			</div>
+			<div class="item active-tab" onclick="ouvrir('joueurs')">
+				<span class="niveau-1">JOUEURS</span>
+				<span class="niveau-2"></span>
+			</div>
+			<div class="item" onclick="ouvrir('compte')">
+				<span class="niveau-1">COMPTE</span>
+				<span class="niveau-2"></span>
+			</div>
+			<div class="item" onclick="deconnexion()">
+				<span class="niveau-1">QUITTER</span>
+				<span class="niveau-2"></span>
+			</div>
+		</div>
+	</header>
+	<section>
+		<div class="search-container">
+			<div class="cover" onclick='closeFenetre("search-container")'></div>
+			<div class="box">
+				<div class="titre">Ajouter des contacts</div>
+				<div class="corps">
+					<div class="input">
+						<input type="search" id="search" onkeyup="search()" placeholder="Entrez le nom du contact">
+					</div>
+					<div class="resultats-recherche">
+						<h4 class="null">Aucun contact n'est enregistré à ce nom</h4>
+						<!-- <div class="search-contact">
+							<div class="nom">Djopa</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="navbar-search">
+			<div class="formulaire">
+				<div class="champs">
+					<input type="search" name="nom" onclick="searchBox()" id="search" class="name" placeholder="Entrez un nom à rechercher"/>
+				</div>
+				<div class="search-btn default-btn" onclick="searchBox()">
+					<img class="logo" src="Images/search.png"/>
+					<span class="texte capriola">Rechercher</span>
+				</div>
+			</div>
+		</div>
+		<div class="bloc-joueurs">
+			<div class="entete">
+				<div class="gauche">Contacts</div>
+				<div class="droite">
+					<div class="titre">
+						<!-- Discussion avec <span class="username">DJOPA</span> - <span class="nbre_messages">5 Messages</span> -->
+						Messagerie
+					</div>
+					<!-- <div class="create-btn valid-btn">
+						<span class="texte">Proposer une partie</span>
+					</div> -->
+				</div>
+			</div>
+			<div class="corps">
+				<div class="liste contacts">
+					<div class="resultats-recherche">
+						<div class="titre">- Résultats Recherche -</div>
+						<div class="resultat"></div>
+					</div>
+					<div class="liste-result"></div>
+<!-- 
+					<div class="contact active-contact">
+						<div class="left">
+							<h4 class="nom">Djopa</h4>
+							<div class="autre">
+								<span class="niveau">Niveau 4</span> - <span class="points">830 pts</span>
+							</div>
+						</div>
+						<div class="right">
+							<span class="notification"></span>
+						</div>
+					</div>
+
+					<div class="contact">
+						<div class="left">
+							<h4 class="nom">Djopa</h4>
+							<div class="autre">
+								<span class="niveau">Niveau 4</span> - <span class="points">830 pts</span>
+							</div>
+						</div>
+						<div class="right">
+							<span class="notification">
+								<span class="value">23</span>
+							</span>
+						</div>
+					</div>
+ -->
+				</div>
+				<div class="messages-box">
+						<div class="pattern"></div>
+						<div class="default-page">
+						<h1>MOLUX</h1>
+						<BR>
+						<p>
+							Cliquez sur un joueur <br>pour démarrer une conversation
+						</p>
+					</div>
+					<div class="chat-container">
+						<div class="messages-container">
+<!-- 
+							
+							<div class="message receive">
+								<div class="message-bloc">
+									<div class="message-container">
+										<div class="message-text">//est entrain d'écrire</div>
+									</div>
+									<div class="status"></div>
+								</div>	
+							</div> 
+						-->
+
+						</div>
+						<div class="response">
+							<div class="box-emojis"></div>
+							<div class="box-repondre-message"></div>
+							<div class="box-reponses">
+								<div class="emoji-btn">
+									<img src="Images/svg/smile.svg"/>
+								</div>
+								<div class="texte-message">
+									<div class="input-message" onkeyup="ecrit()" contenteditable="true"></div>
+								</div>
+								<div class="send-btn active-btn capriola" onclick="send()">Envoyer</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<audio class="tonalite"></audio>
+	<footer>
+		<hr>
+		<span class="copyright">
+			Copyright &#169; <a href="www.tchatat.fr">Tchat'At Inc</a>, 2018.
+		</span>
+	</footer>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="joueurs.js"></script>
+</body>
+</html>

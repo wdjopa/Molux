@@ -1,0 +1,313 @@
+<html>
+<head>
+	<title>Molux - Compte</title>
+	<link rel="stylesheet" type="text/css" href="Fonts/polices.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" media="screen and (min-width: 750px)" href="compte.large.css" type="text/css" />
+    <link rel="stylesheet"  media="screen and (max-width: 750px)" href="materialize.css">
+    <link rel="stylesheet" media="screen and (max-width: 750px)" href="compte.min.css" type="text/css" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="theme-color" content="#fff">
+	<meta name="application-name">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-title">
+	<meta name="description" content="Jeu de lettre en réseau. Possibilité de jouer à plusieurs. Principe : Former le plus le mot avec les lettres données. Jouez gratuitement sur Tchatat.fr/molux"/>
+	<meta property="og:type" content="game" />
+	<meta property="og:title" content="Molux, Jeu de lettres en réseau - Compte" />
+	<meta property="og:description" content="Jeu de lettre en réseau. Possibilité de jouer à plusieurs. Principe : Former le plus le mot avec les lettres données. Jouez gratuitement sur Tchatat.fr/molux" />
+	<meta property="og:url" content="https://https://molux.eu-4.evennode.com/index.html/" />
+	<meta property="og:site_name" content="Molux" />
+		<!-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  var OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "81d9b0bd-15f6-49d4-a790-ad7d372b9c33",
+      autoRegister: false,
+      notifyButton: {
+        enable: true,
+      },
+    });
+  });
+</script> -->
+</head>
+<body>
+	<div class="small-screen hide-on-med-and-up">
+		
+			<div class="chargement-accueil">
+					<h2>Chargement ...</h2>
+					<img src="Images/texte.svg" alt="chargement">
+					<button onclick="window.location.reload" class="btn-large marron">Actualiser</button>
+				</div>
+			<header>
+					<div class="navbar-fixed">
+				  <nav class=" nav-extended macondo marron">
+					<div class="nav-wrapper">
+					  <a href="parties" style="margin-left: 2vw;" class="brand-logo left" >MOLUX</a>
+					  <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+					</div>
+					<!-- <div class="nav-content capriola">
+						  <ul class="tabs tabs-transparent">
+							<li class="tab enattente-tab" onclick="tab('enattente')"><a class="active" href="#enattente">EN ATTENTE</a></li>
+							<li class="tab encours-tab" onclick="tab('encours')"><a class="" href="#encours">EN COURS</a></li>
+							<li class="tab joueur-tab" onclick="tab('joueurs')"><a class="" href="#joueurs">JOUEURS</a></li>
+						  </ul>
+						</div> -->
+					  </nav>
+					</div>
+					 <ul id="slide-out" class="sidenav">
+						<li><div class="user-view">
+						  <div class="background">
+							<img src="Images/background.png">
+						  </div>
+						  <a href="#user"><div class="circle circle2 center marron macondo">D</div></a>
+						  <a href="#name"><span class="white-text name pseudo"></span></a>
+						  <a href="#email"><span class="white-text email tel"></span></a>
+						</div></li>
+						<li><a class="waves-effect" href="parties"><i class="material-icons">home</i>Accueil</a></li>
+						<li><a class="waves-effect" href="#!" onclick="ouvrirParametres()"><i class="material-icons">add</i>Créer une partie</a></li>
+						<li><a class="waves-effect" href="joueurs"><i class="material-icons">group</i>Messages</a></li>
+						<li><a class="waves-effect" href="compte"><i class="material-icons">settings</i>Paramètres</a></li>
+						<li><a class="waves-effect" href="#!" onclick="quitter()"><i class="material-icons">refresh</i>Actualiser</a></li>
+						<li><a class="waves-effect" href="#!" onclick="share()"><i class="material-icons">share</i>Partager</a></li>
+						<li><div class="divider"></div></li>
+						<li><a class="subheader">Copyright &#169; Tchat'At Inc 2018.</a></li>
+					  </ul>
+							
+				</header>
+				
+			
+		<section>
+			<h4 class="white-text center macondo">Paramètres de compte</h4>
+			<div style="padding-bottom: 5vh;"></div>
+
+				<div class="partie-gauche">
+					<div class="profil-box">
+						<h2 class="titre">Mon Profil</h2>
+						<div class="container">
+							<div class="ligne pseudo">
+								<div class="col titre left-col">Pseudo</div>
+								<div class="col valeur right-col">DJOPA</div>
+							</div>
+							<div class="ligne niveau">
+								<div class="col titre left-col">Niveau</div>
+								<div class="col valeur right-col">1</div>
+							</div>
+							<div class="ligne score">
+								<div class="col titre left-col">Score total</div>
+								<div class="col valeur right-col">130</div>
+							</div>
+							<div class="ligne langue">
+								<div class="col titre left-col">Langue</div>
+								<div class="col valeur right-col">Français</div>
+							</div>
+						</div>
+					</div>
+		
+		
+					<div class="infos-box">
+						<h2 class="titre">Mes Informations</h2>
+						<div class="container">
+							<div class="ligne parties">
+								<div class="col titre left-col">Parties</div>
+								<div class="col valeur right-col">45</div>
+							</div>
+							<div class="ligne pays">
+								<div class="col titre left-col">Pays</div>
+								<div class="col valeur right-col">Cameroun</div>
+							</div>
+							<div class="ligne dat">
+								<div class="col titre left-col">Date d'inscription</div>
+								<div class="col valeur right-col">24 Avril 2018</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="partie-droite">
+					<div class="coordonnees-box">
+						<h2 class="titre">Mes Coordonnées</h2>
+						<div class="container">
+							<div class="ligne pseudo">
+								<span class="label titre">Nom de profil</span>
+								<div class="input">
+									<input type="text" readonly class="col valeur left-col champ"/>
+									<div class="col right-col btn" onclick="modifier('pseudo')">Modifier</div>
+								</div>
+							</div>
+							<div class="ligne email">
+								<span class="label titre">Adresse électronique</span>
+								<div class="input">
+									<input type="email" readonly class="col valeur left-col champ"/>
+									<div class="col right-col btn" onclick="modifier('email')">Modifier</div>
+								</div>
+							</div>
+							<div class="ligne password">
+								<span class="label titre">Mot de passe</span>
+								<div class="input">
+									<input type="password"  readonly class="col valeur left-col champ"/>
+									<div class="col right-col btn" onclick="modifier('password')">Modifier</div>
+								</div>
+							</div>
+							<div class="ligne pays">
+								<span class="label titre">Pays</span>
+								<div class="input">
+									<input type="text" readonly class="col valeur left-col champ"/>
+									<div class="col right-col btn" onclick="modifier('pays')">Modifier</div>
+								</div>
+							</div>
+							<div class="ligne langue">
+								<span class="label titre">Langue</span>
+								<div class="input">
+									<input type="text"  readonly class="col valeur left-col champ"/>
+									<div class="col right-col btn" onclick="modifier('langue')">Modifier</div>
+								</div>
+							</div>
+							<div class="ligne tel">
+								<span class="label titre">Numero de téléphone</span>
+								<div class="input">
+									<input type="tel" readonly class="col valeur left-col champ"/>
+									<div class="col right-col btn" onclick="modifier('tel')">Modifier</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</section>
+			<footer>
+				<hr>
+				<span class="copyright">
+					Copyright &#169; <a href="www.tchatat.fr">Tchat'At Inc</a>, 2018.
+				</span>
+			</footer>
+
+	</div>
+	<div class="large-screen hide-on-small-only">
+			<header>
+					<div class="titre macondo">MOLUX</div>
+					<div class="tabs capriola">
+						<div class="item" onclick="ouvrir('parties')">
+							<span class="niveau-1">PARTIES</span>
+							<span class="niveau-2"></span>
+						</div>
+						<div class="item" onclick="ouvrir('joueurs')">
+							<span class="niveau-1">JOUEURS</span>
+							<span class="niveau-2"></span>
+						</div>
+						<div class="item active-tab" onclick="ouvrir('compte')">
+							<span class="niveau-1">COMPTE</span>
+							<span class="niveau-2"></span>
+						</div>
+						<div class="item" onclick="deconnexion()">
+							<span class="niveau-1">QUITTER</span>
+							<span class="niveau-2"></span>
+						</div>
+					</div>
+				</header>
+				<section>
+					<div class="partie-gauche">
+						<div class="profil-box">
+							<h2 class="titre">Mon Profil</h2>
+							<div class="container">
+								<div class="ligne pseudo">
+									<div class="col titre left-col">Pseudo</div>
+									<div class="col valeur right-col">DJOPA</div>
+								</div>
+								<div class="ligne niveau">
+									<div class="col titre left-col">Niveau</div>
+									<div class="col valeur right-col">1</div>
+								</div>
+								<div class="ligne score">
+									<div class="col titre left-col">Score total</div>
+									<div class="col valeur right-col">130</div>
+								</div>
+								<div class="ligne langue">
+									<div class="col titre left-col">Langue</div>
+									<div class="col valeur right-col">Français</div>
+								</div>
+							</div>
+						</div>
+			
+			
+						<div class="infos-box">
+							<h2 class="titre">Mes Informations</h2>
+							<div class="container">
+								<div class="ligne parties">
+									<div class="col titre left-col">Parties</div>
+									<div class="col valeur right-col">45</div>
+								</div>
+								<div class="ligne pays">
+									<div class="col titre left-col">Pays</div>
+									<div class="col valeur right-col">Cameroun</div>
+								</div>
+								<div class="ligne dat">
+									<div class="col titre left-col">Date d'inscription</div>
+									<div class="col valeur right-col">24 Avril 2018</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="partie-droite">
+						<div class="coordonnees-box">
+							<h2 class="titre">Mes Coordonnées</h2>
+							<div class="container">
+								<div class="ligne pseudo">
+									<span class="label titre">Nom de profil</span>
+									<div class="input">
+										<div class="col left-col valeur champ">DJOPA</div>
+										<div class="col right-col btn">Modifier</div>
+									</div>
+								</div>
+								<div class="ligne email">
+									<span class="label titre">Adresse électronique</span>
+									<div class="input">
+										<div class="col valeur left-col champ">wilfried.djopa@gmail.com</div>
+										<div class="col right-col btn">Modifier</div>
+									</div>
+								</div>
+								<div class="ligne password">
+									<span class="label titre">Mot de passe</span>
+									<div class="input">
+										<div class="col valeur left-col champ">*********</div>
+										<div class="col right-col btn">Modifier</div>
+									</div>
+								</div>
+								<div class="ligne langue">
+									<span class="label titre">Langue</span>
+									<div class="input">
+										<div class="col valeur left-col champ">Français</div>
+										<div class="col right-col btn">Modifier</div>
+									</div>
+								</div>
+								<div class="ligne tel">
+									<span class="label titre">Numero de téléphone</span>
+									<div class="input">
+										<div class="col valeur left-col champ"></div>
+										<div class="col right-col btn">Modifier</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</section>
+				<footer>
+					<hr>
+					<span class="copyright">
+						Copyright &#169; <a href="www.tchatat.fr">Tchat'At Inc</a>, 2018.
+					</span>
+				</footer>
+				
+	</div>
+	
+	<script type="text/javascript" src="js/jquery.js"></script>
+    <script src="js/materialize.js"></script>	
+	<script type="text/javascript" src="socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="compte.js"></script>
+</body>
+</html>

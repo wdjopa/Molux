@@ -1,0 +1,26 @@
+{
+  "name": "game",
+  "version": "1.0.0",
+  "description": "Jeu de Lettre. Molux",
+  "main": "server.js",
+  "scripts": {
+    "test": "start",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "node.js",
+    "express",
+    "socket.io"
+  ],
+  "author": "wilfried13willy@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongodb": "^3.1.1",
+    "request": "^2.87.0",
+    "socket.io": "^2.1.1",
+    "webrtc-adapter": "^6.3.2"
+  },
+  "devDependencies": {}
+}

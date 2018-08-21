@@ -1,0 +1,96 @@
+
+body{
+	background: url("Images/background.png");
+}
+header{
+	box-sizing: border-box;
+	min-height: 25vh;
+	background: rgba(89,75,62,0.75);
+	text-shadow: 1px 1px 1px black;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	color: white;
+	font-size: 10vh;
+	color: #FAF5F0;
+}
+
+.chargement-accueil{
+	background: rgba(10,10,10,0.74);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	font-size: 2em;
+	color: white;
+	justify-content: center;
+	align-items: center;
+	z-index: 10000000000;
+}
+.bug-btn{
+	position: fixed;
+	padding: 1em;
+	margin: 1em auto;
+	left: 10rem;
+	border-radius: 3em;
+	z-index: 100000000000;
+
+}
+
+section{
+	background: rgba(89,75,62,0.75);
+	min-height: 65vh;
+	padding-bottom: 5vh;
+	box-sizing: border-box;
+	width: 100%;
+}
+section .bienvenue{
+	font-size: 5vh;
+}
+section .inscription-text{
+	font-size: 1em;
+	padding: 3vh 0;
+	width: 100%;
+}
+section .form{
+	overflow: hidden;
+	display: block;
+	height: auto;
+	width: 100%;
+}
+section .type-2{
+	display: none;
+}
+.footer .copyright a{
+	color: white;
+	text-decoration: underline;
+}
+input:not([type]), input[type="text"]:not(.browser-default){
+	border: none;
+	background: rgba(46,38,31,0.66);
+	width: 100%;
+	font-family: capriola;
+	border-radius: 5px;
+	height: 8vh;
+	color: white;
+	padding: 2vw;
+}
+.btn-large{
+	width: 100%;
+	padding:0 2vw;
+}
+.chocolate{
+	background: chocolate;
+}
+.footer{
+	background: rgba(89,75,62,0.75);
+	max-height: 70vh;
+	padding-bottom: 5vh;
+	width: 100%;
+	box-sizing: border-box;
+}
