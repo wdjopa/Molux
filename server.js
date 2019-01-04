@@ -23,9 +23,40 @@ var users = {};
 var messages = {};
 var contacts = {};
 var messageries = {};
+//var cors = require('cors');
 
+// use it before all route definitions
+//app.use(cors({origin: 'http://localhost:8888'}));
+
+// Add headers
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost');
+
+	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
+
+	res.setHeader('Access-Control-Allow-Origin', 'http://moduleweb.esigelec.fr');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
 
 app.use(express.static('public'));
+
+app.get('/', function(req, res){
+	res.sendFile(__dirname + '/index.html');
+});
 
 app.get('/=:admin', function(req, res){
 	if(parties[req.params.admin] != null){
@@ -34,10 +65,6 @@ app.get('/=:admin', function(req, res){
     }else{
 		res.sendFile(__dirname + '/index.html');
 	}
-});
-
-app.get('/', function(req, res){
-	res.sendFile(__dirname + '/index.html');
 });
 app.get('/accueil.html', function(req, res){
 	res.sendFile(__dirname + '/index.html');
@@ -200,6 +227,13 @@ io.sockets.on("connection", function (socket){
 			console.log("Deconnexion d'un utilisateur.\nCaractéristiques: ");
 			console.log(user);
 			io.sockets.emit("il quitte la partie", partie.admin, user.pseudo);
+			user.derniereConnexion=new Date();
+			console.log("@@@ Mise a jour des données");
+			MongoClient.connect(url, { useNewUrlParser: true },function(err, db) {
+				if (err) console.log(err);
+				var dbo = db.db(dbase);
+				dbo.collection("user").update({"user.pseudo":user.pseudo},{"user":user});
+			});
 			if(parties[user.pseudo]){
 				// Il est admin d'une partie
 				console.log("AVANT");
@@ -237,6 +271,11 @@ io.sockets.on("connection", function (socket){
 					console.log(parties);
 					io.sockets.emit("replace partie", user.pseudo, part);
 					io.sockets.emit("parties", parties);
+					let parts = [];
+					for(var a in parties){
+						parts.push(parties[a]);
+					}
+					io.sockets.emit("server-android:parties", JSON.stringify(parts));
 
 					if(parties[part.admin].etat != 1){
 						if(parties[part.admin].prets >= parties[part.admin].joueurs.length || parties[part.admin].listeJoueurs.length == parties[part.admin].joueursPrets.length){
@@ -251,6 +290,11 @@ io.sockets.on("connection", function (socket){
 					console.log(parties);
 					io.sockets.emit("suppression partie", user.pseudo);	
 					io.sockets.emit("parties", parties);
+					let parts = [];
+					for(var a in parties){
+						parts.push(parties[a]);
+					}
+					io.sockets.emit("server-android:parties", JSON.stringify(parts));
 				}
 			}
 			else if(parties[partie.admin]){
@@ -293,6 +337,11 @@ io.sockets.on("connection", function (socket){
 						}
 					}
 					io.sockets.emit("parties", parties);
+					let parts = [];
+					for(var a in parties){
+						parts.push(parties[a]);
+					}
+					io.sockets.emit("server-android:parties", JSON.stringify(parts));
 					
 					console.log(" ---- DIMENSION APRES ---");
 					console.log(partie.joueurs.length);
@@ -307,6 +356,7 @@ io.sockets.on("connection", function (socket){
 					console.log(user.pseudo," a quitté la partie terminée qui a été créée par ", partie.admin);
 				}
 			}		
+			
 			console.log("Deconnexion de "+user.pseudo);
 			io.sockets.emit("utilisateur connecte", utilisateursConnectes);
 		}
@@ -430,6 +480,11 @@ io.sockets.on("connection", function (socket){
 				parties[partie.admin] = partie;
 				io.sockets.emit("partie lancee", partie);
 				io.sockets.emit("parties", parties);
+				let parts = [];
+				for(var a in parties){
+					parts.push(parties[a]);
+				}
+				io.sockets.emit("server-android:parties", JSON.stringify(parts));
 				//Génération des lettres
 				if(partie.parametres.pluralite == "oui"){
 					// Lettres sans doublons
@@ -532,6 +587,11 @@ io.sockets.on("connection", function (socket){
 					io.sockets.emit("utilisateur connecte", utilisateursConnectes);
 					delete parties[game.admin];
 					io.sockets.emit("parties", parties);
+					let parts = [];
+					for(var a in parties){
+						parts.push(parties[a]);
+					}
+					io.sockets.emit("server-android:parties", JSON.stringify(parts));
 				}
 			});
 		}
@@ -548,6 +608,11 @@ io.sockets.on("connection", function (socket){
 
 	socket.on("non-lus", function (nombreMessages, username){
 		io.sockets.emit("non-lus", nombreMessages, username);
+	})
+
+	socket.on("messenger:cmd", function (message){
+		console.log("Messenger a dit : "+message);
+		socket.emit("messenger:cmd", message);
 	})
 
 	socket.on("creer partie", function (partie1){
@@ -580,6 +645,11 @@ io.sockets.on("connection", function (socket){
 				// socket.emit("partie creee");
 				console.log(user.pseudo+" a créé une nouvelle partie.");
 				io.sockets.emit("parties", parties);
+				let parts = [];
+				for(var a in parties){
+					parts.push(parties[a]);
+				}
+				io.sockets.emit("server-android:parties", JSON.stringify(parts));
 			}
 			else{
 				socket.emit("partie existe deja");
@@ -599,6 +669,11 @@ io.sockets.on("connection", function (socket){
 			//partie.messages.push(message);
 			parties[admin].messages.push(message);
 			io.sockets.emit("parties", parties);
+			let parts = [];
+			for(var a in parties){
+				parts.push(parties[a]);
+			}
+			io.sockets.emit("server-android:parties", JSON.stringify(parts));
 			io.sockets.emit("message des parties", admin);
 		}
 	});
@@ -616,6 +691,11 @@ io.sockets.on("connection", function (socket){
 				parties[admin].messages[indice].lus.push(util);
 				//partie.messages[indice].lu.push(util);
 				io.sockets.emit("parties", parties);	
+				let parts = [];
+				for(var a in parties){
+					parts.push(parties[a]);
+				}
+				io.sockets.emit("server-android:parties", JSON.stringify(parts));
 			}
 		}
 	})
@@ -649,6 +729,11 @@ io.sockets.on("connection", function (socket){
 						console.log(user.pseudo+"a quitté la partie de "+partie.admin);
 					}
 					io.sockets.emit("parties", parties);
+					let parts = [];
+					for(var a in parties){
+						parts.push(parties[a]);
+					}
+					io.sockets.emit("server-android:parties", JSON.stringify(parts));
 					socket.emit("fermer partie", partie, user);
 				}
 			}
@@ -669,6 +754,11 @@ io.sockets.on("connection", function (socket){
 			partie = parties[admin];
 			console.log(user.pseudo+" a joint la partie créée par "+admin);
 			io.sockets.emit("parties", parties);
+			let parts = [];
+			for(var a in parties){
+				parts.push(parties[a]);
+			}
+			io.sockets.emit("server-android:parties", JSON.stringify(parts));
 			io.sockets.emit("partie rejoint", parties[admin]);
 		}
 	})
@@ -684,6 +774,11 @@ io.sockets.on("connection", function (socket){
 				partie = parties[admin];
 				console.log(user.pseudo+" a joint la partie créée par "+admin);
 				io.sockets.emit("parties", parties);
+				let parts = [];
+				for(var a in parties){
+					parts.push(parties[a]);
+				}
+				io.sockets.emit("server-android:parties", JSON.stringify(parts));
 				io.sockets.emit("partie rejoint", parties[admin]);
 			}
 			else{
@@ -709,7 +804,7 @@ io.sockets.on("connection", function (socket){
 	})
 
 	socket.on("lus", function (contact, messages){
-
+		/*
 		// On ajoute les messages lus dans la liste de mes messages et on les retire dans mes unreads
 		chaine = fs.readFileSync("contacts", "UTF-8");
 		contacts = JSON.parse(chaine);
@@ -738,11 +833,12 @@ io.sockets.on("connection", function (socket){
 		fs.writeFileSync("unreads", chaine, "UTF-8");
 
 		socket.emit("update contacts", contacts[user.pseudo], 1);
+		*/
 
 	})
 
 	socket.on("new message", function (message){
-		
+		/*
 		chaine = fs.readFileSync("contacts", "UTF-8");
 		contacts = JSON.parse(chaine);
 		console.log(contacts);
@@ -779,26 +875,29 @@ io.sockets.on("connection", function (socket){
 		}
 		io.sockets.emit("non-lus", unreads[message.receiver][message.sender].length, message.receiver);
 		io.sockets.emit("unread", message.receiver, unreads[message.receiver]);
+		*/
 	})
 
 	socket.on("unread", function (){
-
+		/*
 		let unreads = {};
 		if(fs.statSync("unreads").size > 0){
 			chaine = fs.readFileSync("unreads", "UTF-8");
 			unreads = JSON.parse(chaine);
 		}
 		socket.emit("unread", user.pseudo, unreads[user.pseudo]);
+		*/
 	})
 
 	socket.on("charger unread", function (pseudo){
-
+		/*
 		let unreads = {};
 		if(fs.statSync("unreads").size > 0){
 			chaine = fs.readFileSync("unreads", "UTF-8");
 			unreads = JSON.parse(chaine);
 		}
 		socket.emit("charger unread", pseudo, unreads[user.pseudo]);
+		*/
 	})
 
 	socket.on("contacts", function(){
@@ -940,9 +1039,21 @@ io.sockets.on("connection", function (socket){
 					});
 				}
 				else{
-					socket.emit("message", "Ce pseudo est deja utilisé.");
-					socket.emit("verif_username_rep", 1);
-					console.log("Pseudo Deja utilisé ...")
+					dbo.collection("user").find({"user.tel":data.telephone}).toArray(function (err, result2){
+						if(result2.length == 0){		
+							socket.emit("message", "Ce pseudo est deja utilisé.");
+							socket.emit("verif_username_rep", 1);
+							console.log("Pseudo Deja utilisé ...")
+						}
+						else{
+							// Il s'agit d'une connexion
+							console.log(result2[0]);
+							users[data.username] = result2[0].user;
+							user = result2[0].user;
+							console.log(user);
+							resultat(user);
+						}
+					});
 				}
 			})
 		});
@@ -1072,10 +1183,12 @@ io.sockets.on("connection", function (socket){
 		user.niveau = 1;
 		user.score = 0;
 		user.parties = 0;
+		user.rang = users.length;
 		user.pays = '';
 		user.email = '';
 		user.password = '';
 		user.langue = 'francais';
+		user.derniereConnexion = new Date();
 		user.date = new Date();
 
 
@@ -1105,12 +1218,124 @@ io.sockets.on("connection", function (socket){
 				}
 			})
 		});
-
 		return ret;
 	}
 
+	/*
+	* 	Communication avec Android
+	*/
+
+	socket.on("android-server:donnees_utilisateur", function (json){
+		let username = JSON.parse(json).username;
+		MongoClient.connect(url, function(err, db) {
+			if (err) console.log(err);
+			db.db(dbase).collection("user").find({"user.pseudo":username}).toArray(function (err, result){
+				socket.emit("server-android:donnees_utilisateur", JSON.stringinfy(result[0]['user']));
+			})
+		});
+	});
+
+	socket.on("android-server:premier_formulaire", function (json){
+		console.log(json);
+		console.log(JSON.parse(json));
+		let num = JSON.parse(json).num;
+		//let langue = JSON.parse(json).langue;
+		let username = JSON.parse(json).username;
+		let password = JSON.parse(json).password;
+
+		if(num == 0){
+			// Inscription
+			user = {};
+			let ret = 1;
+			let chaine;
+			
+			user.pseudo = username.replace(/ /g, "").trim();
+			user.password = password.replace(/ /g, "").trim();
+			user.langue = 'francais';
+			user.tel = "";
+			user.rang = users.length;
+			user.niveau = 1;
+			user.score = 0;
+			user.parties = 0;
+			user.pays = '';
+			user.email = '';
+			user.derniereConnexion = new Date();
+			user.date = new Date();
+			MongoClient.connect(url, function(err, db) {
+				if (err) console.log(err);
+				db.db(dbase).collection("user").find({"user.pseudo":user.pseudo.toLowerCase()}).toArray(function (err, result){
+					if(result.length == 0){
+						// La personne n'est pas encore enregistrée, on va à la page suivante
+						console.log(result);
+						console.log("Pas encore existant");
+						let email = JSON.parse(json).email;
+						user.email = email;						
+						db.db(dbase).collection("user").insertOne({user});
+						socket.emit("message","Enregistré");
+						users[user.pseudo] = user;
+						resultat(user);
+						socket.emit("server-android:second_formulaire", false);
+						socket.emit("server-android:premier_formulaire", false, num);
+					}
+					else{
+						ret = 0;
+						console.log("existant");
+						socket.emit("message","Pseudo Deja utilisé ...");
+						socket.emit("server-android:premier_formulaire", true, num);
+					}
+				})
+			});
+		}
+		else{
+			//Connexion
+			MongoClient.connect(url, function(err, db) {
+				if (err) console.log(err);
+				db.db(dbase).collection("user").find({"user.pseudo":username.toLowerCase(), "user.password":password}).toArray(function (err, result){
+					if(result.length == 0){
+						// Identifiant inconnus
+						socket.emit("server-android:premier_formulaire", true, num);
+					}
+					else{
+						let user = result[0]['user'];
+						rangUser(user);
+						socket.emit("server-android:premier_formulaire", false, num);
+						socket.emit("server-android:user", JSON.stringify(user));
+						let parts = [];
+						for(var a in parties){
+							parts.push(parties[a]);
+						}
+						io.sockets.emit("server-android:parties", JSON.stringify(parts));
+					}
+				})
+			});
+		}
+	})
+	socket.on("android-server:parties", function (){
+		let parts = [];
+		for(var a in parties){
+			parts.push(parties[a]);
+		}
+		io.sockets.emit("server-android:parties", JSON.stringify(parts));
+	})
+	socket.on("android-server:second_formulaire", function (json, callback){
+		let email = JSON.parse(json).email;
+		user.email = email;
+		MongoClient.connect(url, function(err, db) {
+			if (err) console.log(err);
+			db.db(dbase).collection("user").insertOne({user});
+			socket.emit("message","Enregistré");
+			users[user.pseudo] = user;
+			resultat(user);
+			socket.emit("server-android:second_formulaire", false);
+		});
+	});
+
+
+
+
 	socket.on("connexion json", function (utilisateur){
 		user = utilisateur;
+		user.derniereConnexion = ''+new Date();
 		name = user.pseudo;
 		console.log(name," vient de se connecter.");
 		MongoClient.connect(url, function(err, db) {
@@ -1122,9 +1347,20 @@ io.sockets.on("connection", function (socket){
 				}
 				else{
 					console.log("Connexion de "+user.pseudo);
+					console.log("@@@ Mise a jour des données");
+					MongoClient.connect(url, { useNewUrlParser: true },function(err, db) {
+						if (err) console.log(err);
+						var dbo = db.db(dbase);
+						dbo.collection("user").update({"user.pseudo":user.pseudo},{"user":user});
+					});
 					utilisateursConnectes[name] = user;
 					io.sockets.emit("utilisateur connecte", utilisateursConnectes);
 					io.sockets.emit("parties", parties);
+					let parts = [];
+					for(var a in parties){
+						parts.push(parties[a]);
+					}
+					io.sockets.emit("server-android:parties", JSON.stringify(parts));
 					socket.emit("contacts", contacts[user.pseudo], user.pseudo);
 				}
 			})
@@ -1147,6 +1383,24 @@ io.sockets.on("connection", function (socket){
 			}
 		});
 	
+	}
+
+	function rangUser(utilisateur){
+		db.collection("user").find({}).toArray(function(err, result) {
+			if (err) console.log(err);
+			console.log("Recherche du rang -- ");
+			let rang = 1;
+			let score = utilisateur.score;
+			let max = score;
+			for(r in result){
+				let user = result[r].user;
+				if(user.score > score){
+					rang++;
+				}					
+			}
+			dbo.collection("user").update({"user.pseudo":utilisateur.pseudo},{"user.rang":rang});
+			socket.emit("rang", rang);
+		});
 	}
 
 	function supprbypos(a, tab){

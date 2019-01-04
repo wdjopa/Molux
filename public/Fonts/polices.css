@@ -1,0 +1,142 @@
+
+@font-face{
+	font-family: "Marshmallow";
+	src: url("Marshmallow/Soft Marshmallow.otf");
+}
+@font-face{
+	font-family: "Macondo";
+	src: url("Macondo/MacondoSwashCaps-Regular.ttf");
+}
+@font-face{
+	font-family: "Capriola";
+	src: url("Capriola/Capriola-Regular.ttf");
+}
+@font-face{
+	font-family: "Prompt";
+	src: url("Prompt/Prompt-Regular.ttf");
+}
+@font-face{
+	font-family: "Dragon Ball";
+	src: url("Dragon ball/Dragon Ball.ttf");
+}
+@font-face{
+	font-family: "Obelix";
+	src: url("Obelix/ObelixPro-Broken-cyr.ttf");
+}
+@font-face{
+	font-family: "Prisma";
+	src: url("Prisma/Prisma.ttf");
+}
+@font-face{
+	font-family: "Fluo Gums";
+	src: url("Fluo Gums/Fluo Gums.ttf");
+}
+@font-face{
+	font-family: "Bubble";
+	src: url("Bubble/Bubble3D.ttf");
+}
+@font-face{
+	font-family: "Jelly";
+	src: url("Jelly/Jelly Crazies.ttf");
+}
+@font-face{
+	font-family: "journey";
+	src: url("Journey to Thailand/Journey to Thailand.ttf");
+}
+@font-face{
+	font-family: "blacklist";
+	src: url("The Blacklist/The Blacklist.ttf");
+}
+@font-face{
+	font-family: "cantarell";
+	src: url("Cantarell/Cantarell-Regular.ttf");
+}
+@font-face{
+	font-family: "open sans";
+	src: url("open sans/openSans-Regular.ttf");
+}
+@font-face{
+	font-family: "open sansl";
+	src: url("open sans/openSans-Light.ttf");
+}
+@font-face{
+	font-family: "lato";
+	src: url("lato/lato-Medium.ttf");
+}
+@font-face{
+	font-family: "latol";
+	src: url("lato/lato-Light.ttf");
+}
+@font-face{
+	font-family: "grobold";
+	src: url("grobold/grobold.ttf");
+}
+@font-face{
+	font-family: "highlander";
+	src: url("highlander/highlander.ttf");
+}
+@font-face{
+	font-family: "Pateglamt";
+	src: url("Pateglamt/Pateglamt.otf");
+}
+@font-face{
+	font-family: "sketch";
+	src: url("sketch/sketch 3D.otf");
+}
+@font-face{
+	font-family: "black diamond";
+	src: url("Black Diamond/Black Diamond.ttf");
+}
+@font-face{
+	font-family: "millennial solstice";
+	src: url("millennial solstice/millennial solstice.ttf");
+}
+@font-face{
+	font-family: "Monsieur Pomme";
+	src: url("Monsieur Pomme/Monsieur-Pomme.otf");
+}
+@font-face{
+	font-family: "eras";
+	src: url("Other/erasmd.ttf");
+}
+@font-face{
+	font-family: "estre";
+	src: url("Other/estre.ttf");
+}
+@font-face{
+	font-family: "felix";
+	src: url("Other/felixti.ttf");
+}
+@font-face{
+	font-family: "gothic";
+	src: url("Other/gothic.ttf");
+}
+@font-face{
+	font-family: "leelawad";
+	src: url("Other/leelawad.ttf");
+}
+@font-face{
+	font-family: "ltype";
+	src: url("Other/ltype.ttf");
+}
+
+
+
+
+
+
+
+/**/
+.macondo{
+	font-family: "Macondo";
+
+	font-weight: 100;
+}
+.capriola{
+	font-family: "Capriola";
+	
+	font-weight: 100;
+}
+.opensans{
+	font-family: "Open sans";
+}

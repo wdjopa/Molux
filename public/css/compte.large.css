@@ -1,0 +1,243 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+
+
+section .valid-btn{
+
+	cursor:  pointer;
+	background: #2D9CDB;
+
+	margin: 0 1vw;
+	box-shadow: 2px 1px 3px #555;
+	border-radius: 0.5vw;
+	color: white;
+	font-family: "capriola";
+}
+
+
+.hide-on-med-and-up{
+	display: none;
+}
+
+
+
+body{
+	background: url("../Images/background.png");
+}
+header{
+	background: #CF8442;
+	height: 15vh;
+	box-sizing: border-box;
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	box-shadow: 2px 0px 5px #888;
+	box-shadow: 2px 1px 3px #555;
+
+}
+header .titre{
+	padding: 2vh 3vw;
+	color: white;
+	font-size: 3.5vw;
+}
+header .tabs{
+	padding: 2vh 3vw;
+	margin-right: 1vw;
+	width: 55%;
+	color: white;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	height: 100%;
+}
+header .tabs .item{
+	width: 20%;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	text-align: center;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+}
+header .tabs .item:hover{
+	width: 20%;
+	text-align: center;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	background: rgba(100,30,60,0.15);
+
+}
+header .tabs .item.active-tab{
+	background:  #A3662F;
+}
+
+section{
+	background: rgba(114,72,34,0.45);
+	padding: 2vw;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 75vh;
+}
+section .partie-gauche{
+	width: 25%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+section .partie-gauche .profil-box{ 
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background: #EFE2D7;
+	border-radius: 5px;
+	overflow: hidden;
+	box-shadow: 0px 0px 4px rgba(0,0,0,0.5);
+	height: 50%;
+}
+section .partie-gauche .infos-box{ 
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background: #EFE2D7;
+	border-radius: 5px;
+	overflow: hidden;
+	box-shadow: 0px 0px 4px rgba(0,0,0,0.5);
+	height: 40%;
+}
+section .partie-gauche .container{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	height: 80%;
+}
+section .partie-gauche .container .ligne{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+	font-family: "capriola";
+	font-size: 1.2vw;
+}
+section .partie-gauche .container .ligne .col{
+	width: 45%;
+}
+section .partie-gauche .container .ligne .left-col{
+	font-size: 1vw;
+	color: #444;
+	text-align: right;
+}
+
+section h2.titre{  
+	background: #CF8442;
+	box-shadow: 0px 0px 4px rgba(0,0,0,0.25);
+	color: white;
+	font-family: "capriola";
+	font-weight: 100;
+	font-size: 1.2vw;
+	height: 10vh;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+section .partie-droite{
+	width: 70%;
+	background: #EFE2D7;
+	box-shadow: 0px 0px 4px rgba(0,0,0,0.25);
+	border-radius: 5px;	
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	overflow: hidden;
+}
+section .partie-droite .container{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	height: 80%;
+}
+section .partie-droite .container .ligne{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	width: 95%;
+	height: 20%;
+	font-family: "capriola";
+	font-size: 1vw;
+}
+section .partie-droite .container .ligne .label{
+	width: 100%;
+	text-align: left;
+	margin: 1vh 0;
+	color: #444;
+}
+section .partie-droite .container .ligne .input{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	background: whitesmoke;
+	width: 100%;
+	height: 100%;
+	box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+	border-radius: 4px;
+}
+section .partie-droite .container .ligne .input .champ{
+	padding: 0 1vw;
+}
+section .partie-droite .container .ligne .input .btn{
+	width: 15%;
+	height: 100%;
+	background: #E2E2E2;
+	color: #2F80ED;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+section .partie-droite .container .ligne .input .btn:hover{
+	background: #B9CDE4;
+}
+
+
+
+footer{
+
+	background: rgba(114,72,34,0.45);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 10vh;
+	color: #FAF5F0;
+	font-size: 1vw;
+	font-family: "open sans";
+}
+footer a{
+	color: white;
+}

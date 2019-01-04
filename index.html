@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
 	<meta charset="utf-8">
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="theme-color" content="#fff">
@@ -12,15 +12,15 @@
 	<meta name="description" content="Jeu de lettre en réseau. Possibilité de jouer à plusieurs. Principe : Former le plus le mot avec les lettres données. Jouez gratuitement sur Tchatat.fr/molux"/>
 	<meta property="og:type" content="game" />
 	<meta property="og:title" content="Molux, Jeu de lettres en réseau - Accueil" />
-	<meta property="og:description" content="Jeu de lettre en réseau. Possibilité de jouer à plusieurs. Principe : Former le plus le mot avec les lettres données. Jouez gratuitement sur Tchatat.fr/molux" />
-	<meta property="og:url" content="https://https://molux.eu-4.evennode.com/index.html/" />
+	<meta property="og:description" content="Jeu de lettre en réseau. Possibilité de jouer à plusieurs. Principe : Former le plus de mots avec les lettres données. Jouez gratuitement sur Tchatat.fr/molux" />
+	<meta property="og:url" content="https://molux.eu-4.evennode.com/index.html/" />
 	<meta property="og:site_name" content="Molux" />
 	<title>MOLUX - Accueil</title>
 	<link rel="stylesheet" type="text/css" href="Fonts/polices.css">
 	<!-- <link rel="stylesheet" type="text/css" href="accueil.large.css"> -->
-    <link rel="stylesheet" media="screen and (min-width: 750px)" href="accueil.large.css" type="text/css" />
-    <link rel="stylesheet"  media="screen and (max-width: 750px)" href="materialize.css">
-    <link rel="stylesheet" media="screen and (max-width: 750px)" href="accueil.min.css" type="text/css" />
+    <link rel="stylesheet" media="screen and (min-width: 750px)" href="css/accueil.large.css" type="text/css" />
+    <link rel="stylesheet"  media="screen and (max-width: 750px)" href="css/materialize.css">
+    <link rel="stylesheet" media="screen and (max-width: 750px)" href="css/accueil.min.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 	<script>
@@ -44,9 +44,10 @@
 					<img src="Images/texte.svg" alt="chargement">
 					<button onclick="window.location.reload" class="btn-large marron">Actualiser</button>
 				</div>
+				<!--
 		<div class="bug-btn z-depth-2 purple lighten-1" onclick="signal_bug()">
 			<i class="material-icons white-text">bug_report</i>
-		</div>
+		</div>-->
 
 		<div id="modal1" class="modal">
 		<div class="modal-content">
@@ -65,7 +66,7 @@
 				<div class="row center white-text">
 					<div class="col s12 bienvenue macondo">
 						<span style="width:100%;text-align:center;">
-						Inscription
+						Authentification
 						</span>
 					</div>
 					<div class="col s12 inscription-text macondo">
@@ -85,7 +86,7 @@
 						</div>
 						<div class="col s12 red-text text-lighten-1" style="margin-top:3vh;">
 							<span style="width:100%;text-align:center;">
-								<input type="text" class="tel champ center white-text capriola" placeholder="Numero de téléphone (avec indicatif)">
+								<input type="text" class="tel champ center white-text capriola" placeholder="Tel (avec indicatif)">
 							</span>
 						</div>
 						<div class="col s12 red-text text-lighten-1" style="margin-top:3vh;">
@@ -108,6 +109,15 @@
 					</div>
 				</div>
 			</div>
+			<br>
+			<div class="center white-text capriola">
+					<h5 class="titre">LIKE & SHARE</h5>
+					<div class="row center container">
+						<div class="col center" style="width: 100%;display: flex; flex-direction: row; justify-content: center;">
+							<i class="material-icons white-text"></i>
+							<iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FmoluxGame&width=170&layout=button_count&action=like&size=large&show_faces=true&share=true&height=46&appId=2153590934893278" width="170" height="46" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+						</div>
+					</div>
 		</section>
 		<div class="footer">
 			<div class="container">
@@ -127,7 +137,7 @@
 			<div class="form-box">
 				<div class="form type-1">
 					<input class="pseudo champ" type="text" placeholder="Pseudonyme"/>
-					<input class="tel champ" type="tel" placeholder="+33 7 XX XX XX XX"/>
+					<input class="tel champ" type="text" placeholder="Tel (avec indicatif)"/>
 					<button class="continuer btn capriola" onclick="continuer()">CONTINUER</button>
 				</div>
 				<div class="form type-2">
@@ -135,9 +145,16 @@
 					<button class="inscription btn capriola" onclick="confirmation()">JE M'INSCRIS</button>
 				</div>
 			</div>
+			
 			<div class="statistiques capriola">
-				<h3 class="titre">STATISTIQUES</h3>
-				<span class="animated-text">23 parties en cours</span>
+				<h3 class="titre">LIKE & SHARE</h3>
+				<div class="row">
+					<div class="col">
+						<i class="material-icons white-text"></i>
+						<iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FmoluxGame&width=170&layout=button_count&action=like&size=large&show_faces=true&share=true&height=46&appId=2153590934893278" width="170" height="46" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+					</div>
+				</div>
+				<span class="animated-text"></span>
 			</div>
 		</section>
 		<footer class="capriola">
@@ -152,7 +169,7 @@
 	<script src="js/jquery.js"></script>
     <script src="js/materialize.js"></script>
 	<script src="socket.io/socket.io.js"></script>
-	<script src="accueil.js"></script>
+	<script src="js/accueil.js"></script>
 	<script type="text/javascript">
 		
 			

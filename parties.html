@@ -4,10 +4,10 @@
 	<title>MOLUX - Parties</title>
 	<link rel="stylesheet" type="text/css" href="Fonts/polices.css">
 	<meta charset="utf-8">
-	<link rel="stylesheet" media="screen and (min-width: 750px)" href="parties.large.css" type="text/css" />
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet"  media="screen and (max-width: 750px)" href="materialize.css">
-    <link rel="stylesheet" media="screen and (max-width: 750px)" href="parties.min.css" type="text/css" />
+	<link rel="stylesheet" media="screen and (min-width: 750px)" href="css/parties.large.css" type="text/css" />
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet"  media="screen and (max-width: 750px)" href="css/materialize.css">
+    <link rel="stylesheet" media="screen and (max-width: 750px)" href="css/parties.min.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="theme-color" content="#fff">
@@ -15,11 +15,11 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 	<meta name="apple-mobile-web-app-title">
-	<meta name="description" content="Jeu de lettre en réseau. Possibilité de jouer à plusieurs. Principe : Former le plus le mot avec les lettres données. Jouez gratuitement sur Tchatat.fr/molux"/>
+	<meta name="description" content="Jeu de lettre en réseau. Possibilité de jouer à plusieurs. Principe : Former le plus de mots avec les lettres données. Jouez gratuitement sur Tchatat.fr/molux"/>
 	<meta property="og:type" content="game" />
 	<meta property="og:title" content="Molux, Jeu de lettres en réseau - Parties" />
 	<meta property="og:description" content="Jeu de lettre en réseau. Possibilité de jouer à plusieurs. Principe : Former le plus le mot avec les lettres données. Jouez gratuitement sur Tchatat.fr/molux" />
-	<meta property="og:url" content="https://https://molux.eu-4.evennode.com/index.html/" />
+	<meta property="og:url" content="https://molux.eu-4.evennode.com/index.html/" />
 	<meta property="og:site_name" content="Molux" />
 	<!-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 	<script>
@@ -44,11 +44,13 @@
 			<img src="Images/texte.svg" alt="chargement">
 			<button onclick="document.location.href='index';" class="btn-large marron">Actualiser</button>
 		</div>
+<!--
 
-		<div id="bug_report" class="bug-btn tooltipped waves-effect z-depth-2 deep-purple darken-4" data-position="bottom" data-tooltip="Cliquez pour signaler un bug" onclick="signal_bug()">
-				<i class="material-icons white-text">bug_report</i>
-		</div>
-
+	<div id="bug_report" class="bug-btn tooltipped waves-effect z-depth-2 deep-purple darken-4" data-position="bottom" data-tooltip="Cliquez pour signaler un bug" onclick="signal_bug()">
+		<i class="material-icons white-text">bug_report</i>
+	</div>
+	
+-->
 		<div id="modal2" class="modal appeler">
 		<div class="modal-content">
 			<h4>Appel</h4>
@@ -89,7 +91,7 @@
 			</div>
 			<div class="modal-footer">
 				<a href="#!" class="modal-close waves-effect waves-green yes btn-flat" >Non</a>
-				<a href="#!" class="modal-close waves-effect waves-green yes btn-flat" onclick="deconexion()">Oui</a>
+				<a href="#!" class="modal-close waves-effect waves-green yes btn-flat" onclick="deconnexion()">Oui</a>
 			</div>
 		</div>
 			
@@ -121,7 +123,7 @@
 			    </div></li>
 			    <li><a class="waves-effect" href=""><i class="material-icons">home</i>Accueil</a></li>
 			    <li><a class="waves-effect" href="#!" onclick="ouvrirParametres()"><i class="material-icons">add</i>Créer une partie</a></li>
-			    <li><a class="waves-effect" href="joueurs"><i class="material-icons">group</i>Messages</a></li>
+			    <!-- <li><a class="waves-effect" href="joueurs"><i class="material-icons">group</i>Messages</a></li> -->
 			    <li><a class="waves-effect" href="compte"><i class="material-icons">settings</i>Paramètres</a></li>
 			    <li><a class="waves-effect" href="#!" onclick="quitter()"><i class="material-icons">refresh</i>Actualiser</a></li>
 			    <li><a class="waves-effect" href="#!" onclick="share()"><i class="material-icons">share</i>Partager</a></li>
@@ -312,8 +314,8 @@
 				<button class="btn medium join" onclick="">
 					<span class="texte">JOINDRE UN CONTACT</span>
 				</button>-->
-				<button class="btn medium messages" onclick="openChat()">
-					<span class="texte">MESSAGES</span>
+				<button class="btn medium messages" onclick="invite()">
+					<span class="texte">INVITER</span>
 				</button>
 			</div>
 			<div class="niveau-2">
@@ -418,7 +420,7 @@
 							</div>
 						</div>
 					</div>
-					<h2>Mots formés</h2>
+					<h2>Mots formés (<span class="totalMotsFormes"></span>)</h2>
 					<div class="mots">
 						<!-- <div class="mot">
 							<span class="valeur">BARRE</span>
@@ -584,11 +586,14 @@
 					<span class="niveau-1">PARTIES</span>
 					<span class="niveau-2"></span>
 				</div>
-				<div class="item header-joueurs" onclick="ouvrir('joueurs')">
-					<span class="niveau-1">JOUEURS</span>
-					<span class="niveau-2">
-					</span>
-				</div>
+				<!--
+
+					<div class="item header-joueurs" onclick="ouvrir('joueurs')">
+						<span class="niveau-1">JOUEURS</span>
+						<span class="niveau-2">
+						</span>
+					</div>
+				-->
 				<div class="item" onclick="ouvrir('compte')">
 					<span class="niveau-1">COMPTE</span>
 					<span class="niveau-2"></span>
@@ -779,7 +784,7 @@
 							</div>
 						</div>
 					</div>
-					<h2>Mots formés</h2>
+					<h2>Mots formés (<span class="totalMotsFormes"></span>)</h2>
 					<div class="mots">
 						<!-- <div class="mot">
 							<span class="valeur">BARRE</span>
@@ -922,8 +927,8 @@
 	<script src="js/dico7lettres.js"></script>
 	<script src="js/dicoAnglais.js"></script>
     <script src="js/materialize.js"></script>	
-	<script src="script.js"></script>
-	<script src="parties.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/parties.js"></script>
 	<script type="text/javascript">
 		//setTimeout(function(){$(".large-screen .page-partie").fadeIn()},100);
 		/*function closeChat(){
