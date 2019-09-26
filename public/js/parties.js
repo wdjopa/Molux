@@ -1,9 +1,6 @@
 var versionAPK=3;
 var tel = 0;
 
-if(!document.location.href.includes('https')){
-	document.location.href = "https://molux.eu-4.evennode.com/parties";
-}
 var points = {
 	"A":1,
 	"B":3,
@@ -231,9 +228,9 @@ if(window.matchMedia("(min-width:800px)").matches) {
 		
 	}
 
-	function ouvrir(link){
-		document.location.href = "http://molux.eu-4.evennode.com/"+link;
-	}
+	// function ouvrir(link){
+	// 	document.location.href = "http://molux.eu-4.evennode.com/"+link;
+	// }
 	
 	function ouvrirParametres(){
 		_(".large-screen .second-screen").style.transform = 'scale(1)';
@@ -1455,9 +1452,9 @@ else{
 		
 	}
 
-	function ouvrir(link){
-		document.location.href = "https://molux.eu-4.evennode.com/"+link;
-	}
+	// function ouvrir(link){
+	// 	document.location.href = "https://molux.eu-4.evennode.com/"+link;
+	// }
 	
 	function ouvrirParametres(){
 		_(".small-screen .second-screen").style.transform = 'scale(1)';
