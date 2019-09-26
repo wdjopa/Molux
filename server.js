@@ -1046,12 +1046,22 @@ io.sockets.on("connection", function (socket){
 							console.log("Pseudo Deja utilisé ...")
 						}
 						else{
-							// Il s'agit d'une connexion
-							console.log(result2[0]);
-							users[data.username] = result2[0].user;
-							user = result2[0].user;
-							console.log(user);
-							resultat(user);
+							dbo.collection("user").find({"user.pseudo":data.username, "user.tel":data.telephone}).collation( { locale: 'en', strength: 1 } ).toArray(function (err, result3){
+								// Il s'agit d'une connexion
+								if(result3.length == 0){		
+									// Elle a échouée
+									socket.emit("message", "Le pseudo ne correspond pas à ce numéro. Essayez "+result2[0].user.pseudo);
+									socket.emit("verif_username_rep", 3, result2[0].user.pseudo);
+									console.log("Erreur de connexion ...")
+								}
+								else{
+									console.log(result3[0]);
+									users[data.username] = result3[0].user;
+									user = result3[0].user;
+									console.log(user);
+									resultat(user);
+								}
+							});
 						}
 					});
 				}
@@ -1353,8 +1363,8 @@ io.sockets.on("connection", function (socket){
 						var dbo = db.db(dbase);
 						dbo.collection("user").update({"user.pseudo":user.pseudo},{"user":user});
 					});
-					utilisateursConnectes[name] = user;
-					io.sockets.emit("utilisateur connecte", utilisateursConnectes);
+					utilisateursConnectes[name] = user; 
+					io.sockets.emit("utilisateur connecte", utilisateursConnectes, socket.socketID);
 					io.sockets.emit("parties", parties);
 					let parts = [];
 					for(var a in parties){

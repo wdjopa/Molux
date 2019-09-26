@@ -26,10 +26,10 @@ if(window.matchMedia("(min-width:800px)").matches) {
 		window.location.href=page;
 	})
 
-	socket.on("verif_username_rep", function (rep){
+	socket.on("verif_username_rep", function (rep, pseudo){
 		console.log(rep);
 		if(rep != 0){
-			user_exist(rep);
+			user_exist(rep, pseudo);
 		}
 		else{
 			next_inscription();
@@ -57,9 +57,9 @@ if(window.matchMedia("(min-width:800px)").matches) {
 	})
 
 	socket.on("nouvel utilisateur", function (user, total){
-		let src="https://www.tchatat.fr/mail/post_new.php?total="+total+"&data="+JSON.stringify(user);
+		// let src="https://www.tchatat.fr/mail/post_new.php?total="+total+"&data="+JSON.stringify(user);
 		_("iframe").setAttribute("src",src);
-		console.log(user);
+		// console.log(user);
 	})
 
 	socket.on("donnees", function (user){
@@ -130,12 +130,20 @@ if(window.matchMedia("(min-width:800px)").matches) {
 		socket.emit("inscription", username, password, question, reponse);
 	}
 
-	function user_exist(rep){
+	function user_exist(rep,pseudo){
 		if(rep==1){
 			_(".large-screen .continuer.btn.capriola").setAttribute("onclick", "continuer()");
 			_(".large-screen .continuer.btn.capriola").innerHTML = 'CONTINUER';
 			
 			_(".large-screen .red.erreur").innerHTML="Ce pseudonyme est déjà utilisé.";
+			_(".large-screen .pseudo").focus();
+		}
+		else if(rep==3){
+
+			_(".large-screen .continuer.btn").setAttribute("onclick", "continuer()");
+			_(".large-screen .continuer.btn").innerHTML = 'CONTINUER';
+			
+			_(".large-screen .erreur").innerHTML="Le numero ne correspond pas à ce pseudo. Essayez le pseudo "+pseudo;
 			_(".large-screen .pseudo").focus();
 		}
 		else{
@@ -217,10 +225,10 @@ else{
 		window.location.href=page;
 	})
 	
-	socket.on("verif_username_rep", function (rep){
+	socket.on("verif_username_rep", function (rep,pseudo){
 		console.log(rep);
 		if(rep != 0){
-			user_exist(rep);
+			user_exist(rep, pseudo);
 		}
 		else{
 			next_inscription();
@@ -320,13 +328,21 @@ else{
 		socket.emit("inscription", username, password, question, reponse);
 	}
 
-	function user_exist(rep){
+	function user_exist(rep, pseudo){
 		if(rep==1){
 
 			_(".small-screen .continuer.btn").setAttribute("onclick", "continuer()");
 			_(".small-screen .continuer.btn").innerHTML = 'CONTINUER';
 			
 			_(".small-screen .erreur").innerHTML="Ce pseudonyme est déjà utilisé.";
+			_(".small-screen .pseudo").focus();
+		}
+		else if(rep==3){
+
+			_(".small-screen .continuer.btn").setAttribute("onclick", "continuer()");
+			_(".small-screen .continuer.btn").innerHTML = 'CONTINUER';
+			
+			_(".small-screen .erreur").innerHTML="Le numero ne correspond pas à ce pseudo. Essayez le pseudo "+pseudo;
 			_(".small-screen .pseudo").focus();
 		}
 		else{

@@ -19,7 +19,7 @@
 	<meta property="og:type" content="game" />
 	<meta property="og:title" content="Molux, Jeu de lettres en réseau - Parties" />
 	<meta property="og:description" content="Jeu de lettre en réseau. Possibilité de jouer à plusieurs. Principe : Former le plus le mot avec les lettres données. Jouez gratuitement sur Tchatat.fr/molux" />
-	<meta property="og:url" content="https://molux.eu-4.evennode.com/index.html/" />
+	<meta property="og:url" content="https://molux.ovh/parties.html/" />
 	<meta property="og:site_name" content="Molux" />
 	<!-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 	<script>
@@ -34,15 +34,72 @@
 		});
 	  });
 	</script> -->
+	<style>
+	
+		.progress 
+		{
+			position: fixed;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			z-index: 9999;
+			background-color: saddlebrown;
+		}
+		.bar 
+		{ 
+		background-color: #FFF; 
+		width:0%; 
+		height:5px; 
+		border-radius: 3px; 
+		}
+		.percent 
+		{ 
+		position:absolute; 
+		display:inline-block; 
+		top:3px; 
+		left:50%; 
+		}
+		#wrapper
+		{
+		width:100%;
+		padding:0px;
+		margin:0px auto;
+		font-family:helvetica;
+		text-align:center;
+		}
+	</style>
+	<script>
+	var date = new Date;
+		var charg_bef = date.getTime();
+
+		function Enter()
+		{
+			date = new Date;
+			charg_aft = date.getTime();
+			ch = "La page a été chargée en " + (charg_aft-charg_bef)/1000 + " seconde(s)";
+			console.log(ch);
+		}
+	</script>
 </head>
-<body>
+<body onload="Enter()">
 	<audio src="sound.mp3" class="sonnerie"></audio>
 	<div class="small-screen hide-on-med-and-up">
 		
 		<div class="chargement-accueil">
 			<h2>Chargement ...</h2>
-			<img src="Images/texte.svg" alt="chargement">
-			<button onclick="document.location.href='index';" class="btn-large marron">Actualiser</button>
+			<div class='progress' id="progress_div">
+				<div class='bar' id='bar1'></div>
+				<div class='percent' id='percent1'></div>
+				<img src="Images/texte.svg" alt="chargement">
+			</div>
+			
+			<div id="wrapper">
+				<div id="content">
+				</div>
+			</div>
+			
+			<input type="hidden" id="progress_width" value="0">
 		</div>
 <!--
 
