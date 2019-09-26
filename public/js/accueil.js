@@ -7,14 +7,14 @@ if(window.matchMedia("(min-width:800px)").matches) {
 	console.log(host);
 	console.log(port);
 	var socket = io.connect("/");	
-	var cookie_user = getCookie('user');
+	var cookie_user = getCookie('user-molux');
 
 	console.log(socket);
 
 	if(cookie_user != ""){
 		//Pas la premiere connexion
 		window.location.href="parties.html";
-		setCookie("user", cookie_user, 10);
+		setCookie("user-molux", cookie_user, 10);
 	}
 
 	socket.emit('message', "nouvelle connexion accueil.js");
@@ -63,9 +63,9 @@ if(window.matchMedia("(min-width:800px)").matches) {
 	})
 
 	socket.on("donnees", function (user){
-		setCookie("user", JSON.stringify(user), 10);
+		setCookie("user-molux", JSON.stringify(user), 10);
 		console.log("Cookie");
-		console.log(getCookie("user"));
+		console.log(getCookie('user-molux'));
 		socket.emit("donnees", user);
 	})
 
@@ -206,14 +206,14 @@ else{
 	console.log(host);
 	console.log(port);
 	var socket = io.connect("/");	
-	var cookie_user = getCookie('user');
+	var cookie_user = getCookie('user-molux');
 
 	console.log(socket);
 
 	if(cookie_user != ""){
 		//Pas la premiere connexion
 		window.location.href="parties.html";
-		setCookie("user", cookie_user, 10);
+		setCookie("user-molux", cookie_user, 10);
 	}
 
 	socket.emit('message', "nouvelle connexion accueil.js");
@@ -262,9 +262,9 @@ else{
 	})
 
 	socket.on("donnees", function (user){
-		setCookie("user", JSON.stringify(user), 10);
+		setCookie("user-molux", JSON.stringify(user), 10);
 		console.log("Cookie");
-		console.log(getCookie("user"));
+		console.log(getCookie('user-molux'));
 		socket.emit("donnees", user);
 	})
 

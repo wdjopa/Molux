@@ -53,8 +53,11 @@ if(host.includes("localhost")){
 }
 host+=port;
 var socket = io.connect("/");		
-var cookie_user = getCookie('user');
+var cookie_user = getCookie('user-molux');
 var params = getParameters();
+if(cookie_user.length<=2){
+	window.location.href="/index";
+}
 var user = JSON.parse(cookie_user);
 var partie_en_cours;
 var game = {};
@@ -70,7 +73,7 @@ Notification.requestPermission();
 
 if(cookie_user == ""){
 	//Premiere connexion
-	window.location.href="index";
+	window.location.href="/index";
 }
 
 if(document.location.href.includes("=")){
@@ -312,7 +315,7 @@ function clavier(_event_){
 		user.score+=game.score;
 		user.parties++;
 		user.niveau = parseInt(user.score/100) + 1;
-		setCookie("user", JSON.stringify(user), 10);
+		setCookie("user-molux", JSON.stringify(user), 10);
 		socket.emit("end game", game);
 	}
 
