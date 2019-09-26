@@ -3,6 +3,19 @@
 	padding: 0;
 }
 
+.status-bar{
+	padding: 1rem;
+	border: 2px dashed white;
+	width: 90%;
+	margin: auto;
+	margin-bottom: 2rem;
+	text-align: center;
+	font-family: "lato";
+	color: white;
+	background: #d2691e77;
+}
+
+
 .small-screen{
 	display: none;	
 }
@@ -316,7 +329,7 @@ header .tabs{
 	color: white;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: flex-end;
 	align-items: center;
 
 	height: 100%;

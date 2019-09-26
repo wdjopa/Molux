@@ -174,19 +174,19 @@
 			      <div class="background">
 			        <img src="Images/background.png">
 			      </div>
-			      <a href="#user"><div class="circle circle2 center marron macondo">D</div></a>
+			      <a href="#user"><div class="circle circle2 center marron macondo"></div></a>
 			      <a href="#name"><span class="white-text name pseudo"></span></a>
 			      <a href="#email"><span class="white-text email tel"></span></a>
 			    </div></li>
 			    <li><a class="waves-effect" href=""><i class="material-icons">home</i>Accueil</a></li>
 			    <li><a class="waves-effect" href="#!" onclick="ouvrirParametres()"><i class="material-icons">add</i>Créer une partie</a></li>
 			    <!-- <li><a class="waves-effect" href="joueurs"><i class="material-icons">group</i>Messages</a></li> -->
-			    <li><a class="waves-effect" href="compte"><i class="material-icons">settings</i>Paramètres</a></li>
+			    <!-- <li><a class="waves-effect" href="compte"><i class="material-icons">settings</i>Paramètres</a></li> -->
 			    <li><a class="waves-effect" href="#!" onclick="quitter()"><i class="material-icons">refresh</i>Actualiser</a></li>
 			    <li><a class="waves-effect" href="#!" onclick="share()"><i class="material-icons">share</i>Partager</a></li>
 			    <li><a class="waves-effect" href="#!" onclick="deconnexionVerif()"><i class="material-icons">power_settings_new</i>Deconnexion</a></li>
 			    <li><div class="divider"></div></li>
-			    <li><a class="subheader">Copyright &#169; Tchat'At Inc 2018.</a></li>
+			    <li><a class="subheader" href="https://djopa.fr">Copyright &#169; Tchat'At Inc 2019.</a></li>
 			  </ul>
 			        
 		</header>
@@ -281,6 +281,7 @@
 			
 			<div class="container">
 				<div class="parties capriola">
+				<div class="status-bar">Vous êtes <span class="rang">.</span>e au classement mondial.</div>
 				<h6 class="white-text">Parties en attente de joueurs </h6>
 				<div class="container-parties">
 					<div class="aucune-partie">Aucune partie n'a encore été proposée. Proposez une en cliquant sur le bouton <em>+</em>
@@ -651,10 +652,10 @@
 						</span>
 					</div>
 				-->
-				<div class="item" onclick="ouvrir('compte')">
+				<!-- <div class="item" onclick="ouvrir('compte')">
 					<span class="niveau-1">COMPTE</span>
 					<span class="niveau-2"></span>
-				</div>
+				</div> -->
 				<div class="item" onclick="deconnexion()">
 					<span class="niveau-1">QUITTER</span>
 					<span class="niveau-2"></span>
@@ -662,8 +663,9 @@
 			</div>
 		</header>
 		<section class="section page-creation">
+			<div class="status-bar">Vous êtes <span class="rang">.</span>e au classement mondial.</div>
 			<div class="navbar-search">
-				<div class="formulaire">
+				<div class="formulaire" style="display: none;">
 					<div class="champs">
 						<select class="filter">
 							<option value="date">Par date</option>
@@ -682,6 +684,7 @@
 				</div>
 			</div>
 			<div class="parties capriola">
+				
 				<h2 class="titre">Parties en attente de joueurs</h2>
 				<div class="container-parties">
 					<div class="aucune-partie">Aucune partie n'a encore été proposée. Proposez une en cliquant sur le bouton <em>Créer une partie</em></div>
@@ -713,7 +716,7 @@
 					<div class="answer-box">
 						<div class="level-1"></div>
 						<div class="level-2">
-							<div class="emoji">
+							<div class="emoji" style="display: none;">
 								<img src="Images/svg/smile.svg"/>
 							</div>
 							<div class="response-input" data-placeholder='Entrez votre message' contenteditable="true"></div>

@@ -136,7 +136,7 @@ MongoClient.connect(
 				//console.log(result);
 				
 				for(r in result){
-					
+					// console.log(result[r])
 					users[result[r].user.pseudo] = result[r].user;
 				}
 				
@@ -198,7 +198,10 @@ var io = require('socket.io').listen(http);
 io.sockets.on("connection", function (socket){
 	
 	var user = {};
+	user.id = socket.id;
 	var partie = {};
+	let id = socket.id;
+	socket.emit("id", id);
 
 	socket.on("bug", function (){
 		console.log("********************** "+user.pseudo+" a signalé un bug. **********************");
@@ -208,6 +211,7 @@ io.sockets.on("connection", function (socket){
 
 		if(!in_array_attribut(name, utilisateursConnectes, 'name')){
 			user.pseudo = name;
+			user.id = socket.id;
 			utilisateursConnectes[name] = user;
 			io.sockets.emit("utilisateur connecte", utilisateursConnectes);
 			io.sockets.emit("groupes", groupes);
@@ -1016,6 +1020,8 @@ io.sockets.on("connection", function (socket){
 		data.telephone = data.telephone.replace(/ /g, "");
 			
 		let user = {};
+		user.id = socket.id;
+
 		let contenu;
 		socket.emit("message", "On est entrain verifier les donnees !");
 
@@ -1185,6 +1191,8 @@ io.sockets.on("connection", function (socket){
 
 	function inscription (username, tel){
 		let user = {};
+		user.id = socket.id;
+
 		let ret = 1;
 		let chaine;
 		
@@ -1256,6 +1264,8 @@ io.sockets.on("connection", function (socket){
 		if(num == 0){
 			// Inscription
 			user = {};
+			user.id = socket.id;
+
 			let ret = 1;
 			let chaine;
 			
@@ -1345,6 +1355,7 @@ io.sockets.on("connection", function (socket){
 
 	socket.on("connexion json", function (utilisateur){
 		user = utilisateur;
+		user.id = socket.id;
 		user.derniereConnexion = ''+new Date();
 		name = user.pseudo;
 		console.log(name," vient de se connecter.");
@@ -1356,22 +1367,26 @@ io.sockets.on("connection", function (socket){
 					socket.emit("deconnexion");
 				}
 				else{
-					console.log("Connexion de "+user.pseudo);
+					console.log(user);
+					// console.log("Connexion de "+user.pseudo);
 					console.log("@@@ Mise a jour des données");
+					if(typeof user != "undefined")
+					rangUser(user);
 					MongoClient.connect(url, { useNewUrlParser: true },function(err, db) {
 						if (err) console.log(err);
 						var dbo = db.db(dbase);
 						dbo.collection("user").update({"user.pseudo":user.pseudo},{"user":user});
 					});
+					user.id = socket.id;
 					utilisateursConnectes[name] = user; 
-					io.sockets.emit("utilisateur connecte", utilisateursConnectes, socket.socketID);
+					io.sockets.emit("utilisateur connecte", utilisateursConnectes);
 					io.sockets.emit("parties", parties);
 					let parts = [];
 					for(var a in parties){
 						parts.push(parties[a]);
 					}
 					io.sockets.emit("server-android:parties", JSON.stringify(parts));
-					socket.emit("contacts", contacts[user.pseudo], user.pseudo);
+					// socket.emit("contacts", contacts[user.pseudo], user.pseudo);
 				}
 			})
 		});	
@@ -1396,20 +1411,24 @@ io.sockets.on("connection", function (socket){
 	}
 
 	function rangUser(utilisateur){
-		db.collection("user").find({}).toArray(function(err, result) {
+		MongoClient.connect(url, { useNewUrlParser: true },function(err, db) {
 			if (err) console.log(err);
-			console.log("Recherche du rang -- ");
-			let rang = 1;
-			let score = utilisateur.score;
-			let max = score;
-			for(r in result){
-				let user = result[r].user;
-				if(user.score > score){
-					rang++;
-				}					
-			}
-			dbo.collection("user").update({"user.pseudo":utilisateur.pseudo},{"user.rang":rang});
-			socket.emit("rang", rang);
+			var dbo = db.db(dbase);
+			dbo.collection("user").find({}).toArray(function(err, result) {
+				if (err) console.log(err);
+				console.log("Recherche du rang -- ");
+				let rang = 1;
+				let score = utilisateur.score;
+				for(r in result){
+					let user = result[r].user;
+					if(user.score > score){
+						rang++;
+						console.log(rang);
+					}					
+				}
+				console.log(utilisateur);
+				socket.emit("rang", rang);
+			});
 		});
 	}
 

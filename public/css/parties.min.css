@@ -31,6 +31,21 @@ a{
 	margin: 5vh 0;
 }
 
+
+
+.status-bar{
+	padding: 1rem;
+	border: 2px dashed white;
+	width: 100%;
+	margin: auto;
+	margin-bottom: 2rem;
+	text-align: center;
+	font-family: "lato";
+	color: white;
+	background: #d2691e77;
+}
+
+
 .circle2{
 	color: white;
 	display: flex;
@@ -1106,11 +1121,11 @@ section.page-jeu .regles{
 	font-family: "capriola";
 	position: absolute;
 	background: #CF8442;
-	overflow: hidden;
+	overflow: auto;
 	left: 0;
 	top: 0;
 	width: 100vw;
-	height: 100vh;
+	min-height: 100vh;
 	z-index: 1000;
 }
 section.page-jeu .regles .regle{
@@ -1179,7 +1194,7 @@ section.page-jeu .regles .loading button{
 	background: #2D9CDB; 
 	cursor: pointer;
 	margin: 0 1vw;
-	height: 100%;
+	height: 4rem;
 	border-radius: 0.5vw;
 	padding: 0 3vw;
 	width: 95%;

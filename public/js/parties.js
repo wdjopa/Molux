@@ -259,10 +259,12 @@ function clavier(_event_){
 		console.log("Connexion avec le serveur.");
 		socket.emit("connexion json",user);
 		document.querySelector("title").innerHTML = "MOLUX - "+user.pseudo;
-		_(".small-screen .sidenav .pseudo").innerHTML = user.pseudo;
+		_(".small-screen .sidenav .pseudo").innerHTML = user.pseudo + " - " +user.rang+"e Mondial.";
 		_(".small-screen .sidenav .circle2").innerHTML = user.pseudo[0].toUpperCase();
 		_(".small-screen .sidenav .tel").innerHTML = user.tel;
-		if(typeof variable !== 'undefined'){
+		console.log(user)
+
+		if(typeof Website2APK !== 'undefined'){
 			console.log("pub");
 			setTimeout(function (){
 				Website2APK.showInterstitialAd();
@@ -1062,6 +1064,11 @@ function clavier(_event_){
 		}
 	}
 
+	socket.on("rang", function (rang){
+		user.rang = rang;
+		$(".rang").html(rang);
+		_(".small-screen .sidenav .pseudo").innerHTML = user.pseudo + " - " +user.rang+"e Mondial.";
+	})
 	socket.on("retirer", function (nom){
 		if(nom == user.pseudo){
 			window.location.reload();
@@ -1164,7 +1171,6 @@ function clavier(_event_){
 			Navigator.share();
 		}
 	}
-
 
 
 

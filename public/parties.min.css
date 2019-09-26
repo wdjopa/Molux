@@ -11,6 +11,9 @@ a{
 .carousel.carousel-slider .carousel-item{
 	min-height: 75vh;
 }
+
+
+
 .chargement-accueil{
 	background: rgba(10,10,10,0.74);
 	position: fixed;
