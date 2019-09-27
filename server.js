@@ -1416,17 +1416,14 @@ io.sockets.on("connection", function (socket){
 			var dbo = db.db(dbase);
 			dbo.collection("user").find({}).toArray(function(err, result) {
 				if (err) console.log(err);
-				console.log("Recherche du rang -- ");
 				let rang = 1;
 				let score = utilisateur.score;
 				for(r in result){
 					let user = result[r].user;
 					if(user.score > score){
 						rang++;
-						console.log(rang);
 					}					
 				}
-				console.log(utilisateur);
 				socket.emit("rang", rang);
 			});
 		});

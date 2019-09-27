@@ -1,3 +1,8 @@
+
+$(".progress").fadeOut("slow");
+$(".chargement-accueil").fadeOut("slow");
+document.querySelector(".chargement-accueil").style.display="none";
+document.querySelector(".progress").style.display="none";
 if(window.matchMedia("(min-width:800px)").matches) {
 	var port = 5000;
 	var host = document.location.href.split(":")[0]+":"+document.location.href.split(":")[1];

@@ -1,9 +1,9 @@
 if(document.cookie == ""){
-    document.location.href="accueil.html";
+    document.location.href="index.html";
 }
 function deconnexion(){
-   deleteCookie('user');
-   document.location.href="accueil.html";
+   deleteCookie('user-molux');
+   document.location.href="index";
 }
 
 function setCookie(cname, cvalue, exdays) {

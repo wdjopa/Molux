@@ -1,5 +1,11 @@
 var versionAPK=3;
 
+
+$(".progress").fadeOut("slow");
+$(".chargement-accueil").fadeOut("slow");
+document.querySelector(".chargement-accueil").style.display="none";
+document.querySelector(".progress").style.display="none";
+
 var points = {
 	"A":1,
 	"B":3,
@@ -69,7 +75,7 @@ var audios = {};
 var totalParties = 0;
 var MesmessagesNonLus = [];
 
-Notification.requestPermission();
+// Notification.requestPermission();
 
 if(cookie_user == ""){
 	//Premiere connexion
@@ -266,15 +272,6 @@ function clavier(_event_){
 		_(".small-screen .sidenav .circle2").innerHTML = user.pseudo[0].toUpperCase();
 		_(".small-screen .sidenav .tel").innerHTML = user.tel;
 		console.log(user)
-
-		if(typeof Website2APK !== 'undefined'){
-			console.log("pub");
-			setTimeout(function (){
-				Website2APK.showInterstitialAd();
-			}, 15000);
-		}
-		// _(".small-screen .sidenav .score").innerHTML = user.score;
-		// _(".small-screen .sidenav .niveau").innerHTML = user.niveau;
 	});
 
 	
@@ -418,7 +415,7 @@ function clavier(_event_){
 					_(screen+" .notif").style.display = "flex";
 					_(screen+" .notif").innerHTML = MesmessagesNonLus.length;
 					audios.partie.play(0);
-					new Notification("Molux - Nouveau Message", {"body":MesmessagesNonLus.length+" messages non lus dans la partie de "+admin,"dir":"auto","icon":"https://www.molux.ovh/favicon.ico"})
+					// new Notification("Molux - Nouveau Message", {"body":MesmessagesNonLus.length+" messages non lus dans la partie de "+admin,"dir":"auto","icon":"https://www.molux.ovh/favicon.ico"})
 				}
 			//	console.log(MesmessagesNonLus);
 			}
@@ -1181,13 +1178,13 @@ function clavier(_event_){
 	socket.on("message", function (message){
 		console.log(message);
 		M.toast({html: message});
-		new Notification("Molux", {"body":message,"dir":"auto","icon":"https://www.molux.ovh/favicon.ico"})
+		// new Notification("Molux", {"body":message,"dir":"auto","icon":"https://www.molux.ovh/favicon.ico"})
 
 	})
 
 	socket.on('disconnect', function () {
 		M.toast({html: 'Déconnexion ...'});
-		new Notification("Molux", {"body":"Vous avez été déconnecté !","dir":"auto","icon":"https://www.molux.ovh/favicon.ico"})
+		// new Notification("Molux", {"body":"Vous avez été déconnecté !","dir":"auto","icon":"https://www.molux.ovh/favicon.ico"})
 	});
 
 	socket.on("replace partie", function (name, part){
@@ -1794,18 +1791,17 @@ function second(a,elt){
 
 
 
-document.onreadystatechange = function(e)
-{
-  if(document.readyState=="interactive")
-  {
-    var all = document.getElementsByTagName("*");
-    for (var i=0, max=all.length; i < max; i++) 
-    {
-      set_ele(all[i]);
-    }
-  }
-}
-
+// document.onreadystatechange = function(e)
+// {
+//   if(document.readyState=="interactive")
+//   {
+//     var all = document.getElementsByTagName("*");
+//     for (var i=0, max=all.length; i < max; i++) 
+//     {
+//       set_ele(all[i]);
+//     }
+//   }
+// }
 function check_element(ele)
 {
   var all = document.getElementsByTagName("*");
